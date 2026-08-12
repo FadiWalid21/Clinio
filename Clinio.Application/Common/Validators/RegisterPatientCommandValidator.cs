@@ -1,3 +1,4 @@
+using System;
 using Clinio.Application.Features.Patients.Commands.RegisterPatient;
 using Clinio.Application.Interfaces;
 using FluentValidation;

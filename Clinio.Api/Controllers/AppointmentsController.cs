@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using Clinio.Api.Extensions;
 using Clinio.Application.Features.Appointments.Commands.CancelAppointment;
 using Clinio.Application.Features.Appointments.Commands.CompleteAppointment;

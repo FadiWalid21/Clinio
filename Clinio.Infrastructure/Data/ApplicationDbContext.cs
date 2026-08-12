@@ -50,7 +50,7 @@ public class ApplicationDbContext: IdentityDbContext<ApplicationUser, Applicatio
             Email = "fadiwalid2002@gmail.com",
             NormalizedEmail = "FADIWALID2002@GMAIL.COM",
             EmailConfirmed = true,
-            SecurityStamp = Guid.NewGuid().ToString()
+            SecurityStamp = "fadi-admin-static-security-stamp-123"
         };
 
         var passwordHasher = new PasswordHasher<ApplicationUser>();

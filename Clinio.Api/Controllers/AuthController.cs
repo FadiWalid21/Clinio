@@ -1,5 +1,6 @@
 using System.Globalization;
 using System.Security.Claims;
+using System.Threading.Tasks;
 using Clinio.Api.Extensions;
 using Clinio.Application.Common.Localization;
 using Clinio.Application.DTOs.Doctors;
@@ -12,6 +13,7 @@ using Clinio.Application.Features.Auth.Commands.UpdateUserImage;
 using Clinio.Application.Features.Doctors.Commands.RegisterDoctor;
 using Clinio.Application.Features.Patients.Commands.RegisterPatient;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Localization;
 

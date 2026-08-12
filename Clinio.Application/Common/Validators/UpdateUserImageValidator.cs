@@ -1,3 +1,4 @@
+using System.IO;
 using Clinio.Application.Features.Auth.Commands.UpdateUserImage;
 using FluentValidation;
 

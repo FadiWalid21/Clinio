@@ -1,3 +1,4 @@
+using System;
 using Clinio.Domain.Enums;
 
 namespace Clinio.Application.DTOs.Appointments;

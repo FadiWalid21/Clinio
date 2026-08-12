@@ -1,3 +1,6 @@
+using System;
+using System.Threading;
+using System.Threading.Tasks;
 using Clinio.Application.Common;
 using Clinio.Application.Interfaces;
 using Clinio.Domain.Enums;

@@ -1,3 +1,4 @@
+using System;
 using Clinio.Application.Features.Patients.Commands.UpdateMyProfile;
 using FluentValidation;
 

@@ -275,28 +275,28 @@ namespace Clinio.Infrastructure.Migrations
                         new
                         {
                             Id = 1,
-                            ConcurrencyStamp = "3080d6a1-a701-4bb6-b22c-35e35c362af9",
+                            ConcurrencyStamp = "46744482-5929-4078-8aa1-c55faae0a213",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
                             Id = 2,
-                            ConcurrencyStamp = "887b6db6-d196-46d4-809e-9daf1b60a22f",
+                            ConcurrencyStamp = "fa96bb12-85f8-4b02-9048-a54534f618f3",
                             Name = "Doctor",
                             NormalizedName = "DOCTOR"
                         },
                         new
                         {
                             Id = 3,
-                            ConcurrencyStamp = "cd866ab2-c8f1-43d8-bba6-cc29ffa796be",
+                            ConcurrencyStamp = "35720c84-711d-45c8-aa70-3d1117d02e04",
                             Name = "Patient",
                             NormalizedName = "PATIENT"
                         },
                         new
                         {
                             Id = 4,
-                            ConcurrencyStamp = "54e36846-d4b3-4edc-893e-2a99425010c6",
+                            ConcurrencyStamp = "91e63533-34bb-4dc4-8c21-919b8ae41d6d",
                             Name = "Secretary",
                             NormalizedName = "SECRETARY"
                         });
@@ -406,7 +406,7 @@ namespace Clinio.Infrastructure.Migrations
                         {
                             Id = 1,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "9cfe986f-bad0-4280-8674-381e0845f0ac",
+                            ConcurrencyStamp = "ec6eef97-44e7-4a5c-a627-3db9ae87dd19",
                             Email = "fadiwalid2002@gmail.com",
                             EmailConfirmed = true,
                             FirstName = "Fadi",
@@ -414,9 +414,9 @@ namespace Clinio.Infrastructure.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "FADIWALID2002@GMAIL.COM",
                             NormalizedUserName = "FADI.WALID",
-                            PasswordHash = "AQAAAAIAAYagAAAAEPs9LSayszQLMsUwmhQCPgSjaByXy/aMAypbDXWlSX+w5HoQvbiSq8fw+4ZUZZ77hA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEBqFvRThBqB62S/TjRmrYQ0CFvcGTzxCOlKygA1SOffmPGDkqssD4eRxPmL+5mFXGw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "8da9f46b-ef09-48cc-918f-47c7578c4f28",
+                            SecurityStamp = "fadi-admin-static-security-stamp-123",
                             TwoFactorEnabled = false,
                             UserName = "fadi.walid"
                         });

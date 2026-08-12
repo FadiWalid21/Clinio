@@ -1,3 +1,5 @@
+using System;
+
 namespace Clinio.Application.DTOs.RegisterPatientDto;
 
 public record RegisterPatientDto(

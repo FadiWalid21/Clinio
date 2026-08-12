@@ -1,6 +1,8 @@
 using Clinio.Api.Middleware;
 using Clinio.Application.Features.Auth.Commands.Login;
 using FluentValidation;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Clinio.Api;
 

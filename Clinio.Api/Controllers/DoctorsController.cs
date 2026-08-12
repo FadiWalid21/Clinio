@@ -1,3 +1,5 @@
+using System;
+using System.Threading.Tasks;
 using Clinio.Api.Extensions;
 using Clinio.Application.Common;
 using Clinio.Application.DTOs.Doctors;

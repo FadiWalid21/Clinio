@@ -1,3 +1,5 @@
+using System;
+
 namespace Clinio.Application.DTOs.Appointments;
 
 public record AvailableSlotDto(
