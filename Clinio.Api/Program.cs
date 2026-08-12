@@ -15,8 +15,24 @@ builder.Services
     .AddApplicationServices()
     .AddInfrastructureServices(builder.Configuration);
 
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowClientApp", policy =>
+    {
+        policy.WithOrigins(
+                "https://clinio-fv1.vercel.app", 
+                "http://localhost:4300",
+                "http://localhost:4200"
+            )
+            .AllowAnyHeader()
+            .AllowAnyMethod()
+            .AllowCredentials();
+    });
+});
 var app = builder.Build();
 
+app.UseCors("AllowClientApp");
 app.UseRequestLocalization(
     app.Services
         .GetRequiredService<IOptions<RequestLocalizationOptions>>()
@@ -38,7 +54,7 @@ if (app.Environment.IsDevelopment())
     });
 }
 
-app.UseCors("DevPolicy");
+// app.UseCors("DevPolicy");
 app.UseExceptionHandler();
 app.UseHttpsRedirection();
 app.UseAuthentication();
