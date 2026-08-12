@@ -1,0 +1,43 @@
+:host {
+  display: block;
+  // Safety net: even if a child ever overflows unexpectedly,
+  // never let this section push the page into horizontal scroll.
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+.scroll-container {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+}
+
+.scroll-track {
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+
+  // Hide the scrollbar visually but keep it scrollable/swipeable
+  scrollbar-width: none; // Firefox
+  -ms-overflow-style: none; // old Edge/IE
+
+  &::-webkit-scrollbar {
+    display: none; // Chrome/Safari
+  }
+}
+
+.doctor-card {
+  scroll-snap-align: start;
+}
+
+.skeleton-avatar,
+.skeleton-line {
+  background-color: rgb(var(--c-border-rgb) / 0.6);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .scroll-track {
+    scroll-behavior: smooth;
+  }
+}

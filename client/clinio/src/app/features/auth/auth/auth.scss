@@ -1,0 +1,237 @@
+/* --- Parent Layout Styles & Typography Shifts --- */
+.auth-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  min-height: 100vh;
+  background-color: var(--c-surface);
+  color: var(--c-slate);
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+
+  @media (min-width: 768px) {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.auth-brand-side {
+  display: none;
+  background-color: var(--c-muted);
+  padding: clamp(2rem, 5vw, 4rem);
+  align-items: center;
+  justify-content: center;
+  border-inline-end: 1px solid var(--c-border);
+
+  @media (min-width: 768px) {
+    display: flex;
+  }
+}
+
+.brand-content {
+  max-width: 460px; /* Marginally wider to comfortably hold larger typography */
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.brand-logo {
+  font-size: 1.75rem; /* Increased size for presence */
+  letter-spacing: -0.04em;
+  color: var(--c-mint);
+  font-weight: 500;
+}
+
+.brand-tagline {
+  font-size: 2.75rem; /* Significantly larger, scaling beautifully into a premium editorial hero header */
+  line-height: 1.2;
+  color: var(--c-slate);
+  margin: 0;
+  font-weight: 500;
+  letter-spacing: -0.03em;
+}
+
+.brand-description {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--c-slate);
+  opacity: 0.75;
+  margin: 0;
+}
+
+.auth-form-side {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.form-wrapper {
+  width: 100%;
+  max-width: 400px;
+}
+
+
+/* --- Micro-Interactions: Calm Presentation Animations --- */
+
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(16px);
+  animation: fadeInUpReveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Staggered Delay Orchestration */
+.delay-1 { animation-delay: 100ms; }
+.delay-2 { animation-delay: 250ms; }
+.delay-3 { animation-delay: 400ms; }
+.delay-4 { animation-delay: 550ms; } /* The form subtly slides up last */
+
+@keyframes fadeInUpReveal {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Optional: Respect user preference patterns for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .fade-in-up {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* --- Shared Core Auth UI Tokens Forced Down to Child Components --- */
+:host ::ng-deep {
+  .auth-card {
+    background-color: var(--c-surface);
+    border-radius: 16px; 
+    width: 100%;
+  }
+
+  .auth-header {
+    margin-block-end: 2rem;
+  }
+
+  .auth-title {
+    font-size: 1.75rem;
+    font-weight: 500;
+    color: var(--c-slate);
+    letter-spacing: -0.02em;
+    margin: 0 0 0.5rem 0;
+  }
+
+  .auth-subtitle {
+    font-size: 0.95rem;
+    color: var(--c-slate);
+    opacity: 0.7;
+    margin: 0;
+  }
+
+  .auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .form-label {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--c-slate);
+  }
+
+  .form-input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    font-size: 0.95rem;
+    font-family: 'Inter', sans-serif;
+    color: var(--c-slate);
+    background-color: var(--c-surface);
+    border: 1px solid var(--c-border);
+    border-radius: 10px;
+    outline: none;
+    box-sizing: border-box;
+    transition: border-color 0.2s ease;
+
+    &::placeholder {
+      color: var(--c-muted);
+      opacity: 0.6;
+    }
+
+    &:focus {
+      border-color: var(--c-mint);
+    }
+  }
+
+  /* Button & Action Logic */
+  .btn {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 500;
+    padding: 0.75rem 1.5rem;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease, opacity 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    box-shadow: none;
+  }
+
+  .btn-primary {
+    background-color: var(--c-mint);
+    color: #ffffff;
+
+    &:hover {
+      background-color: var(--c-mint-deep);
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  }
+
+  .form-link {
+    font-size: 0.875rem;
+    color: var(--c-mint);
+    text-decoration: none;
+
+    &:hover {
+      color: var(--c-mint-deep);
+    }
+  }
+
+  .auth-footer {
+    margin-block-start: 2rem;
+    text-align: center;
+    font-size: 0.875rem;
+    color: var(--c-slate);
+    opacity: 0.8;
+
+    p {
+      margin: 0;
+    }
+  }
+
+  .form-link-action {
+    color: var(--c-mint);
+    text-decoration: none;
+    font-weight: 500;
+
+    &:hover {
+      color: var(--c-mint-deep);
+    }
+  }
+}

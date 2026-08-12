@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+            
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <data name="Auth.InvalidCredentials" xml:space="preserve">
+        <value>البريد الإلكتروني أو كلمة المرور غير صحيحة.</value>
+    </data>
+    <data name="Auth.UserNotFound" xml:space="preserve">
+        <value>المستخدم غير موجود.</value>
+    </data>
+    <data name="Auth.EmailAlreadyExists" xml:space="preserve">
+        <value>هذا البريد الإلكتروني مسجل بالفعل.</value>
+    </data>
+    <data name="Auth.PhoneAlreadyExists" xml:space="preserve">
+        <value>رقم الهاتف هذا مسجل بالفعل.</value>
+    </data>
+    <data name="Auth.Unauthorized" xml:space="preserve">
+        <value>غير مصرح لك بالوصول.</value>
+    </data>
+    <data name="Auth.Forbidden" xml:space="preserve">
+        <value>تم رفض الوصول.</value>
+    </data>
+    <data name="Auth.RefreshTokenExpired" xml:space="preserve">
+        <value>انتهت صلاحية الجلسة. يرجى تسجيل الدخول مرة أخرى.</value>
+    </data>
+    <data name="Auth.RefreshTokenRevoked" xml:space="preserve">
+        <value>تم إلغاء الجلسة. يرجى تسجيل الدخول مرة أخرى.</value>
+    </data>
+    <data name="Validation.Required" xml:space="preserve">
+        <value>هذا الحقل مطلوب.</value>
+    </data>
+    <data name="Validation.InvalidEmail" xml:space="preserve">
+        <value>يرجى إدخال بريد إلكتروني صالح.</value>
+    </data>
+    <data name="Validation.MaxLength" xml:space="preserve">
+        <value>الحد الأقصى المسموح به هو {0} حرفًا.</value>
+    </data>
+    <data name="Validation.MinLength" xml:space="preserve">
+        <value>الحد الأدنى المطلوب هو {0} أحرف.</value>
+    </data>
+    <data name="Validation.InvalidPhoneNumber" xml:space="preserve">
+        <value>يرجى إدخال رقم هاتف صالح.</value>
+    </data>
+    <data name="Auth.LoginSuccess" xml:space="preserve">
+        <value>تم تسجيل الدخول بنجاح.</value>
+    </data>
+    <data name="Validation.InvalidConsultationFee" xml:space="preserve">
+        <value>يجب أن تكون رسوم الاستشارة أكبر من صفر.</value>
+    </data>
+    <data name="Validation.ClinicRequired" xml:space="preserve">
+        <value>يجب عليك الانضمام إلى عيادة موجودة أو تسجيل عيادة جديدة.</value>
+    </data>
+    <data name="Validation.ClinicConflict" xml:space="preserve">
+        <value>لا يمكنك الانضمام إلى عيادة موجودة وتسجيل عيادة جديدة في نفس الوقت.</value>
+    </data>
+    <data name="Auth.DoctorRegisterSuccess" xml:space="preserve">
+        <value>تم تسجيل الطبيب بنجاح.</value>
+    </data>
+    <data name="Auth.PatientRegisterSuccess" xml:space="preserve">
+        <value>تم تسجيل المريض بنجاح.</value>
+    </data>
+    <data name="Auth.SecretaryRegisterSuccess" xml:space="preserve">
+        <value>تم تسجيل السكرتيرة بنجاح.</value>
+    </data>
+    <data name="Auth.ClinicNotFound" xml:space="preserve">
+        <value>العيادة المحددة غير موجودة.</value>
+    </data>
+    <data name="Validation.InvalidDateOfBirth" xml:space="preserve">
+        <value>يجب أن يكون تاريخ الميلاد في الماضي.</value>
+    </data>
+    <data name="Auth.Token.Invalid" xml:space="preserve">
+        <value>الرمز المميز غير صالح.</value>
+    </data>
+    <data name="Auth.Token.UserNotFound" xml:space="preserve">
+        <value>المستخدم غير موجود.</value>
+    </data>
+    <data name="Auth.Token.RefreshInvalid" xml:space="preserve">
+        <value>رمز التحديث غير صالح.</value>
+    </data>
+    <data name="Auth.Token.RefreshExpired" xml:space="preserve">
+        <value>انتهت صلاحية رمز التحديث.</value>
+    </data>
+    <data name="Auth.Token.UpdateFailed" xml:space="preserve">
+        <value>فشل تحديث الرمز المميز. يرجى المحاولة مرة أخرى.</value>
+    </data>
+    <data name="Auth.Token.RefreshSuccess" xml:space="preserve">
+        <value>تم تحديث الرمز المميز بنجاح.</value>
+    </data>
+    <data name="Auth.LogoutFailed" xml:space="preserve">
+        <value>فشل تسجيل الخروج.</value>
+    </data>
+    <data name="Identity.DuplicateUserName" xml:space="preserve">
+        <value>اسم المستخدم هذا مستخدم بالفعل.</value>
+    </data>
+    <data name="Identity.DuplicateEmail" xml:space="preserve">
+        <value>هذا البريد الإلكتروني مسجل بالفعل.</value>
+    </data>
+    <data name="Identity.PasswordTooShort" xml:space="preserve">
+        <value>يجب أن تكون كلمة المرور 6 أحرف على الأقل.</value>
+    </data>
+    <data name="Identity.PasswordRequiresDigit" xml:space="preserve">
+        <value>يجب أن تحتوي كلمة المرور على رقم واحد على الأقل.</value>
+    </data>
+    <data name="Identity.PasswordRequiresUpper" xml:space="preserve">
+        <value>يجب أن تحتوي كلمة المرور على حرف كبير واحد على الأقل.</value>
+    </data>
+    <data name="Identity.PasswordRequiresLower" xml:space="preserve">
+        <value>يجب أن تحتوي كلمة المرور على حرف صغير واحد على الأقل.</value>
+    </data>
+    <data name="Identity.PasswordRequiresNonAlphanumeric" xml:space="preserve">
+        <value>يجب أن تحتوي كلمة المرور على رمز خاص واحد على الأقل.</value>
+    </data>
+    <data name="Identity.InvalidEmail" xml:space="preserve">
+        <value>يرجى إدخال بريد إلكتروني صالح.</value>
+    </data>
+    <data name="Identity.InvalidUserName" xml:space="preserve">
+        <value>اسم المستخدم يحتوي على أحرف غير صالحة.</value>
+    </data>
+    <data name="Identity.UserNotFound" xml:space="preserve">
+        <value>المستخدم غير موجود.</value>
+    </data>
+    <data name="Identity.UserAlreadyInRole" xml:space="preserve">
+        <value>المستخدم مضاف إلى هذا الدور بالفعل.</value>
+    </data>
+    <data name="Identity.UserNotInRole" xml:space="preserve">
+        <value>المستخدم غير مضاف إلى هذا الدور.</value>
+    </data>
+    <data name="Identity.UserLockoutNotEnabled" xml:space="preserve">
+        <value>القفل غير مفعل لهذا المستخدم.</value>
+    </data>
+    <data name="Identity.UserAlreadyHasPassword" xml:space="preserve">
+        <value>المستخدم لديه كلمة مرور بالفعل.</value>
+    </data>
+    <data name="Identity.PasswordMismatch" xml:space="preserve">
+        <value>كلمة المرور الحالية غير صحيحة.</value>
+    </data>
+    <data name="Identity.InvalidToken" xml:space="preserve">
+        <value>الرمز المميز غير صالح أو منتهي الصلاحية.</value>
+    </data>
+    <data name="Identity.LoginAlreadyAssociated" xml:space="preserve">
+        <value>تسجيل الدخول الخارجي هذا مرتبط بحساب بالفعل.</value>
+    </data>
+    <data name="Identity.ConcurrencyFailure" xml:space="preserve">
+        <value>حدث خطأ في التزامن. يرجى المحاولة مرة أخرى.</value>
+    </data>
+    <data name="Image.InvalidFormat" xml:space="preserve">
+        <value>فقط هذه الصيغ المسموح بها. jpg, jpeg, png, webp </value>
+    </data>
+    <data name="Image.TooLarge" xml:space="preserve">
+        <value>يجب ان لا يتعدى حجم الصوره 8 MB</value>
+    </data>
+    <data name="Image.NotFound" xml:space="preserve">
+        <value>الصوره غير متوفرة.</value>
+    </data>
+    <data name="Validation.Doctor.Slot" xml:space="preserve">
+        <value>الفتره الزمنية يجب ان تكون بين 1 إلى 120 دقيقة.</value>
+    </data>
+    <data name="Validation.Doctor.EndTime" xml:space="preserve">
+        <value>وقت الإغلاق يجب ان يكون بعد وقت البدء</value>
+    </data>
+    <data name="Validation.Doctor.StartTime" xml:space="preserve">
+        <value>وقت البدء يجب أن يكون قبل وقت الإغلاق.</value>
+    </data>
+    <data name="ScheduleErrors.AlreadyExist" xml:space="preserve">
+        <value>الجدول موجود بالفعل.</value>
+    </data>
+    <data name="Appointment.SlotNotFound" xml:space="preserve">
+        <value>الوقت المحدد غير موجود.</value>
+    </data>
+    <data name="Appointment.SlotAlreadyBooked" xml:space="preserve">
+        <value>هذا الوقت محجوز بالفعل.</value>
+    </data>
+    <data name="Appointment.SlotMismatch" xml:space="preserve">
+        <value>الوقت المحدد لا يتطابق مع الطبيب أو العيادة المحددة.</value>
+    </data>
+    <data name="Appointment.SlotExpired" xml:space="preserve">
+        <value>انتهى وقت هذا الموعد.</value>
+    </data>
+    <data name="Appointment.BookingFailed" xml:space="preserve">
+        <value>فشل حجز الموعد. يرجى المحاولة مرة أخرى.</value>
+    </data>
+    <data name="Appointment.BookingSuccess" xml:space="preserve">
+        <value>تم حجز الموعد بنجاح.</value>
+    </data>
+    <data name="Appointment.CancelSuccess" xml:space="preserve">
+        <value>تم إلغاء الموعد بنجاح.</value>
+    </data>
+    <data name="Appointment.CancelFailed" xml:space="preserve">
+        <value>فشل إلغاء الموعد. يرجى المحاولة مرة أخرى.</value>
+    </data>
+    <data name="Appointment.NotFound" xml:space="preserve">
+        <value>الموعد غير موجود.</value>
+    </data>
+    <data name="Appointment.Unauthorized" xml:space="preserve">
+        <value>غير مصرح لك بالوصول إلى هذا الموعد.</value>
+    </data>
+    <data name="Appointment.AlreadyCancelled" xml:space="preserve">
+        <value>تم إلغاء هذا الموعد بالفعل.</value>
+    </data>
+    <data name="Appointment.InvalidStatus" xml:space="preserve">
+        <value>الحاله غير صحيحة.</value>
+    </data>
+    <data name="Appointment.CancellationWindowPassed" xml:space="preserve">
+        <value>لقد مر موعد الإلغاء.</value>
+    </data>
+    <data name="Appointment.NotYetOccurred" xml:space="preserve">
+        <value>موعد الحجز لم يحن بعد.</value>
+    </data>
+</root>

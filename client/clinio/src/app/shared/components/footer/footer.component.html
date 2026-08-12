@@ -1,0 +1,184 @@
+<footer class="bg-c-slate dark:bg-slate-950 border-t border-white/10 dark:border-white/5 px-6 md:px-10 pt-16 pb-8 transition-colors duration-200">
+
+  <div class="max-w-[1040px] mx-auto">
+
+    <div class="grid grid-cols-2 md:grid-cols-5 gap-10 md:gap-8 mb-14">
+
+      <div class="col-span-2 md:col-span-2">
+
+        <div class="flex items-center gap-2.5 mb-4">
+          <div class="w-8 h-8 rounded-[10px] bg-c-mint flex items-center justify-center flex-shrink-0">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-white" fill="none"
+                 viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+            </svg>
+          </div>
+          <span class="text-[18px] font-medium text-white dark:text-white tracking-[-0.3px]">
+            {{ ls.t().footer.brand.name || 'Clinio' }}
+          </span>
+        </div>
+
+        <p class="text-[14px] text-white/50 dark:text-white/40 leading-[1.7] max-w-[240px] mb-6">
+          {{ ls.t().footer.brand.tagline }}
+        </p>
+
+        <div class="flex items-center gap-3">
+          <a href="#" aria-label="Facebook"
+             class="w-8 h-8 rounded-lg bg-white/5 border border-white/10 dark:border-white/5
+                    flex items-center justify-center text-white/40 dark:text-white/30
+                    hover:bg-white/10 hover:text-white/70 dark:hover:text-white/60
+                    transition-all duration-200">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/>
+            </svg>
+          </a>
+          <a href="#" aria-label="Instagram"
+             class="w-8 h-8 rounded-lg bg-white/5 border border-white/10 dark:border-white/5
+                    flex items-center justify-center text-white/40 dark:text-white/30
+                    hover:bg-white/10 hover:text-white/70 dark:hover:text-white/60
+                    transition-all duration-200">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none"
+                 viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+              <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+            </svg>
+          </a>
+          <a href="#" aria-label="LinkedIn"
+             class="w-8 h-8 rounded-lg bg-white/5 border border-white/10 dark:border-white/5
+                    flex items-center justify-center text-white/40 dark:text-white/30
+                    hover:bg-white/10 hover:text-white/70 dark:hover:text-white/60
+                    transition-all duration-200">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/>
+              <circle cx="4" cy="4" r="2"/>
+            </svg>
+          </a>
+        </div>
+
+      </div>
+
+      <div>
+        <p class="text-[12px] font-medium text-white/30 dark:text-white/20 uppercase tracking-[0.08em] mb-4">
+          {{ ls.t().footer.patients.heading }}
+        </p>
+        <ul class="space-y-3">
+          <li>
+            <a routerLink="/doctors"
+               class="text-[14px] text-white/55 dark:text-white/40 hover:text-white dark:hover:text-white transition-colors duration-200">
+              {{ ls.t().footer.patients.links.findDoctor }}
+            </a>
+          </li>
+          <li>
+            <a routerLink="/doctors"
+               class="text-[14px] text-white/55 dark:text-white/40 hover:text-white dark:hover:text-white transition-colors duration-200">
+              {{ ls.t().footer.patients.links.browseSpecialties }}
+            </a>
+          </li>
+          <li>
+            <a routerLink="/" fragment="how-it-works"
+               class="text-[14px] text-white/55 dark:text-white/40 hover:text-white dark:hover:text-white transition-colors duration-200">
+              {{ ls.t().footer.patients.links.howItWorks }}
+            </a>
+          </li>
+          <li>
+            <a routerLink="/auth/login"
+               class="text-[14px] text-white/55 dark:text-white/40 hover:text-white dark:hover:text-white transition-colors duration-200">
+              {{ ls.t().footer.patients.links.signIn }}
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div>
+        <p class="text-[12px] font-medium text-white/30 dark:text-white/20 uppercase tracking-[0.08em] mb-4">
+          {{ ls.t().footer.clinics.heading }}
+        </p>
+        <ul class="space-y-3">
+          <li>
+            <a routerLink="/join"
+               class="text-[14px] text-white/55 dark:text-white/40 hover:text-white dark:hover:text-white transition-colors duration-200">
+              {{ ls.t().footer.clinics.links.joinDoctor }}
+            </a>
+          </li>
+          <li>
+            <a routerLink="/register-clinic"
+               class="text-[14px] text-white/55 dark:text-white/40 hover:text-white dark:hover:text-white transition-colors duration-200">
+              {{ ls.t().footer.clinics.links.registerClinic }}
+            </a>
+          </li>
+          <li>
+            <a routerLink="/dashboard"
+               class="text-[14px] text-white/55 dark:text-white/40 hover:text-white dark:hover:text-white transition-colors duration-200">
+              {{ ls.t().footer.clinics.links.dashboard }}
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div>
+        <p class="text-[12px] font-medium text-white/30 dark:text-white/20 uppercase tracking-[0.08em] mb-4">
+          {{ ls.t().footer.company.heading }}
+        </p>
+        <ul class="space-y-3">
+          <li>
+            <a routerLink="/about"
+               class="text-[14px] text-white/55 dark:text-white/40 hover:text-white dark:hover:text-white transition-colors duration-200">
+              {{ ls.t().footer.company.links.about }}
+            </a>
+          </li>
+          <li>
+            <a routerLink="/contact"
+               class="text-[14px] text-white/55 dark:text-white/40 hover:text-white dark:hover:text-white transition-colors duration-200">
+              {{ ls.t().footer.company.links.contact }}
+            </a>
+          </li>
+          <li>
+            <a routerLink="/blog"
+               class="text-[14px] text-white/55 dark:text-white/40 hover:text-white dark:hover:text-white transition-colors duration-200">
+              {{ ls.t().footer.company.links.blog }}
+            </a>
+          </li>
+          <li>
+            <a routerLink="/privacy"
+               class="text-[14px] text-white/55 dark:text-white/40 hover:text-white dark:hover:text-white transition-colors duration-200">
+              {{ ls.t().footer.company.links.privacy }}
+            </a>
+          </li>
+          <li>
+            <a routerLink="/terms"
+               class="text-[14px] text-white/55 dark:text-white/40 hover:text-white dark:hover:text-white transition-colors duration-200">
+              {{ ls.t().footer.company.links.terms }}
+            </a>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="h-px bg-white/10 dark:bg-white/5 mb-8"></div>
+
+    <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+
+      <p class="text-[13px] text-white/30 dark:text-white/20 order-2 sm:order-1 rtl:flex rtl:gap-1">
+        <span>&copy; {{ currentYear }}</span>
+        <span>{{ ls.t().footer.copyright }}</span>
+      </p>
+
+      <div class="flex items-center gap-1 order-1 sm:order-2
+                  bg-white/5 border border-white/10 dark:border-white/5 rounded-lg p-1">
+        <button class="lang-btn active px-3 py-1.5 rounded-md text-[12px] font-medium
+                       text-white transition-all duration-200">
+          EN
+        </button>
+        <button class="lang-btn px-3 py-1.5 rounded-md text-[12px] font-medium
+                       text-white/40 dark:text-white/30 transition-all duration-200 hover:text-white/70 dark:hover:text-white/60">
+          العربية
+        </button>
+      </div>
+
+    </div>
+
+  </div>
+
+</footer>

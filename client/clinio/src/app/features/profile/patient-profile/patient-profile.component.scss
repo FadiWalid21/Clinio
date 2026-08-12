@@ -1,0 +1,272 @@
+/* ── Layout & Containers ────────────────────────── */
+.profile-card {
+  background-color: var(--c-surface);
+  border: 1px solid var(--c-border);
+  border-radius: 1.5rem;
+  padding: 1.75rem;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.04), 0 1px 2px -1px rgba(0, 0, 0, 0.04);
+}
+
+.profile-sidebar {
+  padding: 2rem 1.5rem;
+}
+
+.section-title {
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--c-muted);
+  margin-bottom: 1.25rem;
+}
+
+/* ── Avatar Styles ──────────────────────────────── */
+.avatar-wrap {
+  position: relative;
+  width: 6rem;
+  height: 6rem;
+}
+
+.avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 1.25rem;
+  border: 2px solid var(--c-border);
+}
+
+.avatar-fallback {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--c-mint-soft);
+  color: var(--c-mint-text);
+  font-weight: 700;
+  font-size: 1.75rem;
+  border-radius: 1.25rem;
+  border: 1px solid var(--c-border);
+}
+
+.avatar-overlay {
+  position: absolute;
+  bottom: -0.5rem;
+  right: -0.5rem;
+  width: 2.125rem;
+  height: 2.125rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--c-mint);
+  color: white;
+  border-radius: 0.625rem;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(43, 174, 133, 0.35);
+  transition: all 0.2s;
+
+  &:hover { background-color: var(--c-mint-deep); }
+  &:active { transform: scale(0.95); }
+}
+
+.remove-img-btn {
+  font-size: 12.5px;
+  font-weight: 500;
+  color: var(--c-muted);
+  padding: 0.375rem 0.875rem;
+  border-radius: 0.625rem;
+  border: 1px solid var(--c-border);
+  background-color: var(--c-surface-2);
+  transition: all 0.2s;
+
+  &:hover:not(:disabled) {
+    color: #ef4444;
+    border-color: #fca5a5;
+    background-color: #fef2f2;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+/* ── Meta Components ────────────────────────────── */
+.meta-chip {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.3rem 0.7rem;
+  border-radius: 9999px;
+  background-color: var(--c-surface-2);
+  color: var(--c-muted);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  border: 1px solid var(--c-border);
+}
+
+.meta-chip-red {
+  background-color: rgb(239 68 68 / 0.08);
+  color: #ef4444;
+  border-color: rgb(239 68 68 / 0.2);
+}
+
+/* ── Form Styling ──────────────────────────────── */
+.field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+}
+
+.field-label {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--c-slate);
+  display: flex;
+  align-items: baseline;
+  gap: 0.375rem;
+}
+
+.field-hint {
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--c-muted);
+}
+
+.field-input {
+  width: 100%;
+  padding: 0.625rem 1rem;
+  border-radius: 0.75rem;
+  border: 1px solid var(--c-border);
+  background-color: var(--c-surface-2);
+  color: var(--c-slate);
+  font-size: 0.875rem;
+  outline: none;
+  transition: all 0.2s;
+  font-family: inherit;
+
+  &:focus {
+    border-color: var(--c-mint);
+    background-color: var(--c-surface);
+    box-shadow: 0 0 0 3px rgba(43, 174, 133, 0.15);
+  }
+
+  &.field-error {
+    border-color: #f87171;
+    &:focus { box-shadow: 0 0 0 3px rgba(248, 113, 113, 0.15); }
+  }
+}
+
+.field-readonly {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.field-select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2364748B' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 1.1rem;
+  padding-right: 2.5rem;
+}
+
+.field-textarea {
+  resize: vertical;
+  min-height: 4.5rem;
+  line-height: 1.5;
+}
+
+/* ── Blood Type Selection ───────────────────────── */
+.blood-type-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.5rem;
+
+  @media (min-width: 480px) {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+
+  @media (min-width: 1024px) {
+    grid-template-columns: repeat(9, minmax(0, 1fr));
+  }
+}
+
+.blood-btn {
+  padding: 0.5rem;
+  border-radius: 0.75rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  border: 1px solid var(--c-border);
+  background-color: var(--c-surface-2);
+  color: var(--c-muted);
+  transition: all 0.15s;
+  cursor: pointer;
+}
+
+.blood-idle:hover {
+  border-color: var(--c-border-strong);
+  color: var(--c-slate);
+}
+
+.blood-active {
+  background-color: var(--c-mint);
+  color: white;
+  border-color: var(--c-mint);
+}
+
+/* ── Feedback ────────────────────────────────────── */
+.feedback-error {
+  padding: 0.75rem 1rem;
+  border-radius: 0.875rem;
+  background-color: #fef2f2;
+  border: 1px solid #fecaca;
+  color: #dc2626;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.feedback-success {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  border-radius: 0.875rem;
+  background-color: var(--c-mint-soft);
+  border: 1px solid var(--c-mint-soft);
+  color: var(--c-mint-text);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+/* ── Save Button ──────────────────────────────── */
+.save-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.75rem;
+  border-radius: 0.875rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition: all 0.2s;
+  background-color: var(--c-mint);
+  color: white;
+  box-shadow: 0 2px 8px rgba(43, 174, 133, 0.25);
+
+  &:hover:not(:disabled) {
+    background-color: var(--c-mint-deep);
+  }
+
+  &:disabled {
+    background-color: var(--c-border-strong);
+    box-shadow: none;
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+/* ── Skeleton loading ────────────────────────────── */
+.skeleton-line,
+.skeleton-circle {
+  background-color: rgb(var(--c-border-rgb) / 0.6);
+}

@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+@import '@ngxpert/hot-toast/src/styles/styles.scss';
+
+@import 'styles/tokens';
+@import 'styles/animations';
+@import 'styles/auth';
+
+* { box-sizing: border-box; }
+
+body {
+  background-color: var(--c-bg);
+  color: var(--c-slate);
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+
+.nv-s-pd {
+  padding-top: calc(var(--navbar-height));
+}

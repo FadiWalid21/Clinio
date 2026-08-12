@@ -1,0 +1,193 @@
+<!-- Floating navbar wrapper -->
+<div class="nav-outer">
+  <nav class="nav-pill">
+
+    <!-- Logo -->
+    <a routerLink="/" class="nav-logo">
+      <div class="logo-icon">
+        <i class="ti ti-heartbeat" aria-hidden="true"></i>
+      </div>
+      <span class="logo-text">Cli<span class="logo-accent">nio</span></span>
+    </a>
+
+    <!-- Center links -->
+    <div class="nav-links">
+      <a routerLink="/doctors" routerLinkActive="nav-link-active" class="nav-link">
+        {{ ls.t().common.nav.findDoctor }}
+      </a>
+      <a routerLink="/specialties" routerLinkActive="nav-link-active" class="nav-link">
+        {{ ls.t().common.nav.specialties }}
+      </a>
+      <a routerLink="/how-it-works" routerLinkActive="nav-link-active" class="nav-link">
+        {{ ls.t().common.nav.howItWorks }}
+      </a>
+      <a routerLink="/about-us" routerLinkActive="nav-link-active" class="nav-link">
+        {{ ls.t().common.aboutUs.title }}
+      </a>
+    </div>
+
+    <!-- Right actions -->
+    <div class="nav-actions">
+
+      <!-- Language toggle -->
+      <button (click)="toggleLanguage()" class="nav-icon-btn"
+              [attr.aria-label]="ls.isRtl() ? 'Switch to English' : 'Switch to Arabic'">
+        <span class="lang-label">{{ ls.isRtl() ? 'EN' : 'ع' }}</span>
+      </button>
+
+      <!-- Theme toggle -->
+      <button (click)="toggleTheme()" class="nav-icon-btn"
+              [attr.aria-label]="isDark() ? 'Light mode' : 'Dark mode'">
+        <i [class]="isDark() ? 'ti ti-sun' : 'ti ti-moon'" aria-hidden="true"></i>
+      </button>
+
+      <div class="nav-divider"></div>
+
+      <!-- ── Authenticated ── -->
+      @if (authService.isAuthenticated()) {
+        <div class="relative" (clickOutside)="profileOpen = false">
+
+          <button (click)="profileOpen = !profileOpen"
+                  class="profile-btn" aria-label="Your account">
+
+            <!-- Avatar: image or initials -->
+            @if (profileImage()) {
+              <img [src]="profileImage()!" [alt]="firstName() ?? 'Profile'"
+                   class="profile-img" />
+            } @else {
+              <div class="profile-avatar">
+                @if (initials()) {
+                  <span class="profile-initials">{{ initials() }}</span>
+                } @else {
+                  <i class="ti ti-user" style="font-size:14px" aria-hidden="true"></i>
+                }
+              </div>
+            }
+
+            <!-- First name — hidden on small screens -->
+            @if (firstName()) {
+              <span class="profile-name">{{ firstName() }}</span>
+            }
+
+            <i class="ti ti-chevron-down profile-chevron"
+               [class.rotated]="profileOpen" aria-hidden="true"></i>
+          </button>
+
+          @if (profileOpen) {
+            <div class="profile-dropdown">
+
+              <!-- Profile header inside dropdown -->
+              <div class="dropdown-header">
+                @if (profileImage()) {
+                  <img [src]="profileImage()!" class="dropdown-avatar-img" [alt]="firstName()!" />
+                } @else {
+                  <div class="dropdown-avatar-fallback">{{ initials() }}</div>
+                }
+                <div class="min-w-0">
+                  <p class="dropdown-name">{{ firstName() }}</p>
+                  <p class="dropdown-role">Patient</p>
+                </div>
+              </div>
+
+              <div class="dropdown-divider"></div>
+
+              <a routerLink="/patient/appointments"
+                 (click)="profileOpen = false" class="dropdown-item">
+                <i class="ti ti-calendar-check" aria-hidden="true"></i>
+                My appointments
+              </a>
+              <a routerLink="/patient/profile"
+                 (click)="profileOpen = false" class="dropdown-item">
+                <i class="ti ti-user-circle" aria-hidden="true"></i>
+                Profile settings
+              </a>
+
+              <div class="dropdown-divider"></div>
+
+              <button (click)="logout(); profileOpen = false"
+                      class="dropdown-item dropdown-item-danger">
+                <i class="ti ti-logout" aria-hidden="true"></i>
+                Log out
+              </button>
+            </div>
+          }
+        </div>
+
+      } @else {
+        <!-- Guest -->
+        <a routerLink="/auth" class="btn-ghost">
+          {{ ls.t().common.nav.login }}
+        </a>
+        <a routerLink="/auth/register" class="btn-primary">
+          {{ ls.t().common.nav.getStarted }}
+        </a>
+      }
+
+      <!-- Hamburger -->
+      <button (click)="toggleMenu()" class="hamburger" aria-label="Toggle menu">
+        <span [class.open-top]="isMenuOpen()"></span>
+        <span [class.open-mid]="isMenuOpen()"></span>
+        <span [class.open-bot]="isMenuOpen()"></span>
+      </button>
+
+    </div>
+  </nav>
+</div>
+
+<!-- Mobile menu -->
+@if (isMenuOpen()) {
+  <div class="mobile-menu">
+
+    <!-- Mobile profile header -->
+    @if (authService.isAuthenticated() && firstName()) {
+      <div class="mobile-profile-header">
+        @if (profileImage()) {
+          <img [src]="profileImage()!" class="mobile-avatar-img" [alt]="firstName()!" />
+        } @else {
+          <div class="mobile-avatar-fallback">{{ initials() }}</div>
+        }
+        <span class="mobile-profile-name">{{ firstName() }}</span>
+      </div>
+      <div class="mobile-divider"></div>
+    }
+
+    <a routerLink="/doctors" (click)="toggleMenu()" class="mobile-link">
+      <i class="ti ti-stethoscope" aria-hidden="true"></i>
+      {{ ls.t().common.nav.findDoctor }}
+    </a>
+    <a routerLink="/specialties" (click)="toggleMenu()" class="mobile-link">
+      <i class="ti ti-layout-grid" aria-hidden="true"></i>
+      {{ ls.t().common.nav.specialties }}
+    </a>
+    <a routerLink="/how-it-works" (click)="toggleMenu()" class="mobile-link">
+      <i class="ti ti-info-circle" aria-hidden="true"></i>
+      {{ ls.t().common.nav.howItWorks }}
+    </a>
+
+    <div class="mobile-divider"></div>
+
+    @if (authService.isAuthenticated()) {
+      <a routerLink="/patient/appointments" (click)="toggleMenu()" class="mobile-link">
+        <i class="ti ti-calendar-check" aria-hidden="true"></i>
+        My appointments
+      </a>
+      <a routerLink="/patient/profile" (click)="toggleMenu()" class="mobile-link">
+        <i class="ti ti-user-circle" aria-hidden="true"></i>
+        Profile settings
+      </a>
+      <button (click)="logout(); toggleMenu()" class="mobile-link mobile-link-danger">
+        <i class="ti ti-logout" aria-hidden="true"></i>
+        Log out
+      </button>
+    } @else {
+      <div class="mobile-actions">
+        <a routerLink="/auth" (click)="toggleMenu()" class="btn-ghost mobile-btn">
+          {{ ls.t().common.nav.login }}
+        </a>
+        <a routerLink="/auth/register" (click)="toggleMenu()" class="btn-primary mobile-btn">
+          {{ ls.t().common.nav.getStarted }}
+        </a>
+      </div>
+    }
+  </div>
+}

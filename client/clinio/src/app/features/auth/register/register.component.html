@@ -1,0 +1,127 @@
+<div class="auth-card">
+  <div class="auth-header">
+    <h2 class="auth-title">Create your account</h2>
+    <p class="auth-subtitle">Join Clinio to start tailoring your clinical care.</p>
+  </div>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="auth-form">
+    <div class="form-group">
+      <label for="firstName" class="form-label">First name</label>
+      <input 
+        type="text" 
+        id="firstName" 
+        formControlName="firstName" 
+        class="form-input" 
+                [class.is-invalid]="validation.isInvalid(form, 'firstName')"
+        placeholder="Alex">
+    <app-field-error [form]="form" field="firstName" />
+    </div>
+
+    <div class="form-group">
+      <label for="lastName" class="form-label">Last name</label>
+      <input 
+        type="text" 
+        id="lastName" 
+        formControlName="lastName" 
+        class="form-input" 
+                [class.is-invalid]="validation.isInvalid(form, 'lastName')"
+        placeholder="Morgan" >
+        
+          <app-field-error [form]="form" field="lastName" />
+    </div>
+
+    <div class="form-group">
+  <label for="dateOfBirth" class="form-label">Date of birth</label>
+  <input 
+    type="date" 
+    id="dateOfBirth" 
+    formControlName="dateOfBirth" 
+    class="form-input" 
+    [class.is-invalid]="validation.isInvalid(form, 'dateOfBirth')">
+  <app-field-error [form]="form" field="dateOfBirth" />
+</div>
+
+<div class="form-group">
+  <label for="gender" class="form-label">Gender</label>
+  <select 
+    id="gender" 
+    formControlName="gender" 
+    class="form-input" 
+    [class.is-invalid]="validation.isInvalid(form, 'gender')">
+    <option value="" disabled selected>Select your gender</option>
+    <option value="Male">Male</option>
+    <option value="Female">Female</option>
+  </select>
+  <app-field-error [form]="form" field="gender" />
+</div>
+
+    <div class="form-group">
+      <label for="email" class="form-label">Email address</label>
+      <input 
+        type="email" 
+        id="email" 
+        formControlName="email" 
+        class="form-input"
+                [class.is-invalid]="validation.isInvalid(form, 'email')"
+        placeholder="name@example.com" >
+          <app-field-error [form]="form" field="email" />
+    </div>
+
+    <div class="form-group">
+      <label for="password" class="form-label">Password</label>
+      <input 
+        type="password" 
+        id="password" 
+        formControlName="password" 
+        class="form-input" 
+        [class.is-invalid]="validation.isInvalid(form, 'password')"
+        placeholder="At least 8 characters" >
+      <app-field-error [form]="form" field="password" />
+    </div>
+
+
+    <div class="form-group">
+      <label for="confirmPassword" class="form-label">Confirm Password</label>
+      <input 
+        type="password" 
+        id="confirmPassword" 
+        formControlName="confirmPassword" 
+        class="form-input" 
+                [class.is-invalid]="validation.isInvalid(form, 'confirmPassword')"
+        placeholder="At least 8 characters" >
+      <app-field-error [form]="form" field="confirmPassword" />
+    </div>
+    <div class="form-group-checkbox">
+      <input 
+        type="checkbox" 
+        id="terms" 
+                [class.is-invalid]="validation.isInvalid(form, 'terms')"
+        formControlName="terms" >
+      <label for="terms" class="checkbox-label">I agree to the privacy policy and terms of service.</label>
+      <app-field-error [form]="form" field="terms" />
+    </div>
+
+    @if (serverError) {
+  <div class="server-error">
+    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 flex-shrink-0" fill="none"
+         viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+      <path d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+    </svg>
+    {{ serverError }}
+  </div>
+}
+
+
+<button type="submit" class="btn btn-primary" [disabled]="isLoading">
+      @if (isLoading) {
+        <span class="spinner"></span>
+        Signing in...
+      } @else {
+        Sign in
+      }
+    </button>  </form>
+
+  <div class="auth-footer">
+    <p>Already have an account? <a routerLink="/auth/login" class="form-link-action">Sign in</a></p>
+  </div>
+</div>

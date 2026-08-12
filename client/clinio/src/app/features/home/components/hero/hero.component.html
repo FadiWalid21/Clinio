@@ -1,0 +1,204 @@
+<section class="hero-section relative flex flex-col items-center justify-center overflow-hidden bg-c-surface px-6 md:px-10 py-28 md:py-16">
+
+  <!-- Ambient background -->
+  <div class="absolute inset-0 pointer-events-none overflow-hidden">
+    <div class="hero-glow hero-glow--mint"></div>
+    <div class="hero-glow hero-glow--soft"></div>
+    <div class="hero-dotgrid"></div>
+  </div>
+
+  <div class="relative z-10 w-full max-w-[760px] mx-auto flex flex-col items-center text-center">
+
+    <!-- Badge -->
+    <div class="inline-flex items-center gap-2 bg-c-mint-soft text-c-mint-text
+                text-xs font-medium px-4 py-[6px] rounded-full mb-8
+                border border-c-mint-soft">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" viewBox="0 0 24 24"
+           fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+      </svg>
+      {{ ls.t().hero.badge }}
+    </div>
+
+    <!-- H1 -->
+    <h1 class="hero-heading text-[38px] sm:text-[50px] md:text-[64px] font-medium text-c-slate
+               leading-[1.08] tracking-[-1.5px] mb-5 max-w-[620px]">
+      {{ ls.t().hero.heading }}
+      <span class="hero-accent relative inline-block">
+        {{ ls.t().hero.headingAccent }}
+        <svg class="hero-pulse" viewBox="0 0 220 24" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+          <path d="M0 14 H70 L82 4 L96 22 L108 10 L118 14 H220"
+                stroke="var(--c-mint)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </span>
+    </h1>
+
+    <!-- Subtitle -->
+    <p class="text-[16px] md:text-[17.5px] text-c-muted leading-[1.65] max-w-[460px] mx-auto mb-12">
+      {{ ls.t().hero.subtitle }}
+    </p>
+
+    <!-- Search Bar Wrapper -->
+    <div class="relative w-full max-w-[640px] mx-auto">
+
+      <!-- Floating trust chips (desktop only) -->
+      <div class="hero-chip hero-chip--left hidden lg:flex">
+        <span class="hero-chip-dot"></span>
+        {{ ls.t().hero.stats.doctors.value }} {{ ls.t().hero.stats.doctors.label }}
+      </div>
+      <div class="hero-chip hero-chip--right hidden lg:flex">
+        <span class="hero-chip-star">★</span>
+        {{ ls.t().hero.stats.rating.value }} {{ ls.t().hero.stats.rating.label }}
+      </div>
+
+      <!-- Search Bar -->
+      <div class="flex items-center bg-c-surface border-[1.5px] border-c-border-strong
+                  rounded-[26px] px-6 py-3.5 gap-3
+                  shadow-[0_16px_44px_rgba(0,0,0,0.10)]"
+           [class.rounded-b-none]="isOpen()"
+           [class.border-b-0]="isOpen()">
+
+        @if (isLoading()) {
+          <span class="w-4 h-4 border-2 border-c-mint border-t-transparent
+                       rounded-full animate-spin flex-shrink-0"></span>
+        } @else {
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-c-muted-light flex-shrink-0"
+               fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path d="M21 21l-4.35-4.35M17 11A6 6 0 111 11a6 6 0 0116 0z"/>
+          </svg>
+        }
+
+        <input
+          type="text"
+          [placeholder]="ls.t().hero.search.placeholder"
+          class="flex-1 border-none outline-none bg-transparent
+                 text-[15px] text-c-slate placeholder:text-c-muted-light min-w-0"
+          [value]="searchTerm()"
+          (input)="onInput($event)"
+          (focus)="onFocus()"
+          (blur)="onBlur()"
+        />
+
+        <div class="w-px h-6 bg-c-border-strong flex-shrink-0 hidden sm:block"></div>
+
+        <button class="hidden sm:flex items-center gap-1.5 text-c-muted
+                       text-[13.5px] whitespace-nowrap bg-transparent border-none cursor-pointer">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none"
+               viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+            <path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+          </svg>
+          {{ ls.t().hero.search.city }}
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3" fill="none"
+               viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path d="M19 9l-7 7-7-7"/>
+          </svg>
+        </button>
+
+        <button
+          class="bg-c-mint text-white text-[14px] font-medium
+                 px-6 py-[11px] rounded-[16px] whitespace-nowrap
+                 hover:bg-c-mint-deep transition-colors border-none cursor-pointer
+                 flex items-center gap-2 flex-shrink-0"
+          (click)="onSearchSubmit()"
+          (keydown.enter)="onSearchSubmit()">
+          {{ ls.t().hero.search.button }}
+        </button>
+
+      </div>
+
+      <!-- Dropdown (unchanged logic) -->
+      @if (isOpen() || isLoading()) {
+        <div class="search-dropdown absolute left-0 right-0 bg-c-surface
+                    border-[1.5px] border-c-border-strong border-t-0
+                    rounded-b-[26px] overflow-hidden z-50
+                    shadow-[0_8px_24px_rgba(0,0,0,0.08)]">
+
+          @if (isLoading()) {
+            <div class="py-3 px-5 space-y-1">
+              <div class="text-[10px] font-medium text-c-muted uppercase tracking-wider py-1 mb-2">
+                {{ ls.t().hero.search.searching }}
+              </div>
+              @for (item of [1,2,3]; track item) {
+                <div class="flex items-center gap-3 py-[10px]">
+                  <div class="skeleton-avatar w-9 h-9 flex-shrink-0"></div>
+                  <div class="flex-1 space-y-2">
+                    <div class="skeleton-line h-[13px]"
+                         [style.width]="item === 1 ? '55%' : item === 2 ? '70%' : '45%'"></div>
+                    <div class="skeleton-line h-[11px]"
+                         [style.width]="item === 1 ? '38%' : item === 2 ? '45%' : '32%'"></div>
+                  </div>
+                </div>
+              }
+            </div>
+          }
+
+          @if (!isLoading() && results().length > 0) {
+            <div class="py-2">
+              <div class="text-[10px] font-medium text-c-muted uppercase tracking-wider px-5 py-1 mb-1">
+                {{ ls.t().hero.search.resultsLabel }}
+              </div>
+              @for (doctor of results(); track doctor.id; let i = $index) {
+                <div class="result-item flex items-center gap-3 px-5 py-[10px]
+                           cursor-pointer hover:bg-c-surface-2 transition-colors"
+                     (mousedown)="selectDoctor(doctor)">
+                  @if (doctor.profileImageUrl) {
+                    <img [src]="doctor.profileImageUrl" [alt]="doctor.fullName"
+                         class="w-9 h-9 rounded-full object-cover flex-shrink-0" />
+                  } @else {
+                    <div class="w-9 h-9 rounded-full bg-c-mint-soft flex items-center
+                                justify-center text-[12px] font-medium
+                                text-c-mint-text flex-shrink-0">
+                      {{ initials(doctor.fullName) }}
+                    </div>
+                  }
+                  <div class="flex-1 min-w-0 text-left">
+                    <div class="text-[13.5px] font-medium text-c-slate"
+                         [innerHTML]="highlight('Dr. ' + doctor.fullName)"></div>
+                    <div class="text-[12px] text-c-muted mt-0.5">
+                      {{ doctor.specialty }}
+                      @if (doctor.clinicName) { · {{ doctor.clinicName }} }
+                    </div>
+                  </div>
+                </div>
+              }
+            </div>
+          }
+        </div>
+      }
+    </div>
+
+    <!-- Trust Strip -->
+    <div class="flex items-center justify-center gap-8 md:gap-14 mt-16 flex-wrap">
+      <div class="text-center">
+        <div class="text-[24px] font-medium text-c-slate tracking-[-0.3px]">{{ ls.t().hero.stats.doctors.value }}</div>
+        <div class="text-[12px] text-c-muted mt-0.5">{{ ls.t().hero.stats.doctors.label }}</div>
+      </div>
+      <div class="w-px h-8 bg-c-border-strong hidden sm:block"></div>
+      <div class="text-center">
+        <div class="text-[24px] font-medium text-c-slate tracking-[-0.3px]">{{ ls.t().hero.stats.specialties.value }}</div>
+        <div class="text-[12px] text-c-muted mt-0.5">{{ ls.t().hero.stats.specialties.label }}</div>
+      </div>
+      <div class="w-px h-8 bg-c-border-strong hidden sm:block"></div>
+      <div class="text-center">
+        <div class="text-[24px] font-medium text-c-slate tracking-[-0.3px]">{{ ls.t().hero.stats.rating.value }}</div>
+        <div class="text-[12px] text-c-muted mt-0.5">{{ ls.t().hero.stats.rating.label }}</div>
+      </div>
+      <div class="w-px h-8 bg-c-border-strong hidden sm:block"></div>
+      <div class="text-center">
+        <div class="text-[24px] font-medium text-c-slate tracking-[-0.3px]">{{ ls.t().hero.stats.appointments.value }}</div>
+        <div class="text-[12px] text-c-muted mt-0.5">{{ ls.t().hero.stats.appointments.label }}</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Scroll cue -->
+  <button class="hero-scroll-cue" (click)="scrollToNext()" [attr.aria-label]="ls.t().hero.scrollCue">
+    <span class="hero-scroll-label">{{ ls.t().hero.scrollCue }}</span>
+    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M6 9l6 6 6-6"/>
+    </svg>
+  </button>
+
+</section>

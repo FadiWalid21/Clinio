@@ -1,0 +1,92 @@
+<div class="auth-container">
+  <div class="auth-brand-side">
+    <div class="brand-panel">
+
+      <!-- Background orbs -->
+      <div class="bg-orb o1"></div>
+      <div class="bg-orb o2"></div>
+      <div class="bg-orb o3"></div>
+
+      <!-- Floating stat cards -->
+      <div class="floating-cards">
+        <div class="stat-card sc1">
+          <div class="card-icon">🗓</div>
+          <div class="card-text-group">
+            <div class="card-label">Next appointment</div>
+            <div class="card-value">Dr. Sara Ali — Today, 3:00 PM</div>
+          </div>
+          <div class="pulse-dot"></div>
+        </div>
+        <div class="stat-card sc2">
+          <div class="card-icon">💊</div>
+          <div class="card-text-group">
+            <div class="card-label">Prescription ready</div>
+            <div class="card-value">Amoxicillin 500mg — Alnour Pharmacy</div>
+          </div>
+        </div>
+        <div class="stat-card sc3">
+          <div class="card-icon">📋</div>
+          <div class="card-text-group">
+            <div class="card-label">Recent lab result</div>
+            <div class="card-value">CBC — All values normal ✓</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Brand content -->
+      <div class="brand-content">
+        <div class="brand-logo-row fade-in-up delay-1">
+          <div class="logo-mark">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+              <circle cx="9" cy="9" r="4" fill="white" opacity=".9"/>
+              <circle cx="9" cy="3" r="2" fill="white" opacity=".5"/>
+              <circle cx="15" cy="12" r="2" fill="white" opacity=".5"/>
+              <circle cx="3" cy="12" r="2" fill="white" opacity=".5"/>
+            </svg>
+          </div>
+          <span class="brand-name">clinio</span>
+        </div>
+        <div class="divider-line fade-in-up delay-2"></div>
+        <h1 class="brand-tagline fade-in-up delay-2">
+          Healthcare designed<br>for peace of mind.
+        </h1>
+        <p class="brand-description fade-in-up delay-3">
+          Book appointments, manage prescriptions, and consult with your care team in a calm, modern space.
+        </p>
+        <div class="trust-row fade-in-up delay-3">
+          <div class="trust-item">
+            <div class="trust-check">
+              <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+                <path d="M2 5l2.5 2.5L8 3" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            Secure & private
+          </div>
+          <div class="trust-item">
+            <div class="trust-check">
+              <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+                <path d="M2 5l2.5 2.5L8 3" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            HIPAA compliant
+          </div>
+          <div class="trust-item">
+            <div class="trust-check">
+              <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+                <path d="M2 5l2.5 2.5L8 3" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            24/7 support
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="auth-form-side">
+    <div class="form-wrapper fade-in-up delay-4">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,252 @@
+<div class="min-h-screen bg-c-bg nv-s-pd">
+
+  <!-- ── Skeleton ───────────────────────────────────── -->
+  @if (isLoading()) {
+    <div class="max-w-[1100px] mx-auto px-6 md:px-10 py-10 animate-pulse">
+      <div class="skeleton-line h-4 w-32 rounded-md mb-8"></div>
+      <div class="grid grid-cols-1 lg:grid-cols-[300px_1fr] gap-8 items-start">
+        <div class="profile-card flex flex-col items-center text-center gap-3">
+          <div class="skeleton-circle w-24 h-24 rounded-2xl"></div>
+          <div class="skeleton-line h-4 w-2/3 rounded-md"></div>
+          <div class="skeleton-line h-3 w-1/2 rounded-md"></div>
+        </div>
+        <div class="space-y-6">
+          <div class="profile-card space-y-4">
+            @for (i of [1,2,3,4]; track i) {
+              <div class="skeleton-line h-10 w-full rounded-xl"></div>
+            }
+          </div>
+          <div class="profile-card space-y-4">
+            @for (i of [1,2]; track i) {
+              <div class="skeleton-line h-10 w-full rounded-xl"></div>
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  }
+
+  @if (!isLoading() && profile(); as p) {
+    <div class="max-w-[1100px] mx-auto px-6 md:px-10 py-10">
+
+      <!-- Breadcrumb -->
+      <div class="flex items-center gap-2 text-[12px] text-c-muted mb-8">
+        <a routerLink="/" class="hover:text-c-mint transition-colors">Home</a>
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3" fill="none"
+             viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path d="M9 5l7 7-7 7"/>
+        </svg>
+        <span class="text-c-slate">My profile</span>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-[300px_1fr] gap-8 items-start">
+
+        <!-- ── LEFT: Identity sidebar ─────────────────── -->
+        <div class="profile-card profile-sidebar lg:sticky lg:top-8 flex flex-col items-center text-center">
+
+          <!-- Avatar -->
+          <div class="avatar-wrap">
+            @if (imagePreview()) {
+              <img [src]="imagePreview()!" [alt]="fullName(p)" class="avatar-img" />
+            } @else {
+              <div class="avatar-fallback">{{ initials(p) }}</div>
+            }
+
+            <label class="avatar-overlay" [class.uploading]="isUploadingImage()">
+              @if (isUploadingImage()) {
+                <span class="w-4 h-4 border-2 border-white border-t-transparent
+                             rounded-full animate-spin"></span>
+              } @else {
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none"
+                     viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/>
+                  <path d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"/>
+                </svg>
+              }
+              <input type="file" accept="image/*" class="hidden"
+                     (change)="onImagePicked($event)" [disabled]="isUploadingImage()" />
+            </label>
+          </div>
+
+          <h1 class="text-[19px] font-semibold text-c-slate tracking-[-0.3px] mt-4">
+            {{ fullName(p) }}
+          </h1>
+          <p class="text-[13px] text-c-muted mt-0.5 mb-4 break-all">{{ p.email }}</p>
+
+          <!-- Meta chips -->
+          <div class="flex flex-wrap items-center justify-center gap-2 mb-1">
+            <span class="meta-chip">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3" fill="none"
+                   viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+              </svg>
+              {{ p.age }} years old
+            </span>
+            <span class="meta-chip">{{ p.gender }}</span>
+            @if (p.bloodType) {
+              <span class="meta-chip meta-chip-red">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3" fill="none"
+                     viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path d="M12 2C6 8 4 12 4 15a8 8 0 0016 0c0-3-2-7-8-13z"/>
+                </svg>
+                {{ p.bloodType }}
+              </span>
+            }
+          </div>
+
+          @if (imagePreview()) {
+            <button (click)="removeImage()"
+                    [disabled]="isUploadingImage()"
+                    class="remove-img-btn mt-4">
+              Remove photo
+            </button>
+          }
+        </div>
+
+        <!-- ── RIGHT: Edit form ───────────────────────── -->
+        <form [formGroup]="form" (ngSubmit)="save()" class="space-y-6">
+
+          <!-- Personal information -->
+          <div class="profile-card">
+            <p class="section-title">Personal information</p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div class="field-group">
+                <label class="field-label">First name</label>
+                <input type="text" formControlName="firstName"
+                       class="field-input"
+                       [class.field-error]="form.get('firstName')?.invalid && form.get('firstName')?.touched"
+                       placeholder="Ahmed" />
+              </div>
+              <div class="field-group">
+                <label class="field-label">Last name</label>
+                <input type="text" formControlName="lastName"
+                       class="field-input"
+                       [class.field-error]="form.get('lastName')?.invalid && form.get('lastName')?.touched"
+                       placeholder="Hassan" />
+              </div>
+            </div>
+
+            <div class="field-group mt-4">
+              <label class="field-label">
+                Email
+                <span class="field-hint">(cannot be changed)</span>
+              </label>
+              <input type="email" [value]="p.email" disabled
+                     class="field-input field-readonly" />
+            </div>
+
+            <div class="field-group mt-4">
+              <label class="field-label">Phone number</label>
+              <input type="tel" formControlName="phoneNumber"
+                     class="field-input"
+                     placeholder="+20 100 000 0000" />
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
+              <div class="field-group">
+                <label class="field-label">Date of birth</label>
+                <input type="date" formControlName="dateOfBirth"
+                       class="field-input"
+                       [class.field-error]="form.get('dateOfBirth')?.invalid && form.get('dateOfBirth')?.touched" />
+              </div>
+              <div class="field-group">
+                <label class="field-label">Gender</label>
+                <select formControlName="gender" class="field-input field-select">
+                  <option value="">Select gender</option>
+                  @for (g of genders; track g) {
+                    <option [value]="g">{{ g }}</option>
+                  }
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Medical information -->
+          <div class="profile-card">
+            <p class="section-title">Medical information</p>
+
+            <div class="field-group">
+              <label class="field-label">Blood type</label>
+              <div class="blood-type-grid">
+                @for (bt of bloodTypes; track bt) {
+                  <button type="button"
+                          (click)="form.get('bloodType')?.setValue(bt)"
+                          class="blood-btn"
+                          [class.blood-active]="form.get('bloodType')?.value === bt"
+                          [class.blood-idle]="form.get('bloodType')?.value !== bt">
+                    {{ bt }}
+                  </button>
+                }
+                <button type="button"
+                        (click)="form.get('bloodType')?.setValue('')"
+                        class="blood-btn"
+                        [class.blood-active]="!form.get('bloodType')?.value"
+                        [class.blood-idle]="!!form.get('bloodType')?.value">
+                  Unknown
+                </button>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-5">
+              <div class="field-group">
+                <label class="field-label">
+                  Chronic diseases
+                  <span class="field-hint">Diabetes, hypertension, etc.</span>
+                </label>
+                <textarea formControlName="chronicDiseases"
+                          class="field-input field-textarea"
+                          rows="3"
+                          placeholder="List any chronic conditions…"></textarea>
+              </div>
+              <div class="field-group">
+                <label class="field-label">
+                  Allergies
+                  <span class="field-hint">Medications, food, etc.</span>
+                </label>
+                <textarea formControlName="allergies"
+                          class="field-input field-textarea"
+                          rows="3"
+                          placeholder="List any known allergies…"></textarea>
+              </div>
+            </div>
+          </div>
+
+          <!-- Save feedback -->
+          @if (saveError()) {
+            <div class="feedback-error">{{ saveError() }}</div>
+          }
+          @if (saveSuccess()) {
+            <div class="feedback-success">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 flex-shrink-0" fill="none"
+                   viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+              Profile updated successfully.
+            </div>
+          }
+
+          <!-- Submit -->
+          <div class="flex justify-end">
+            <button type="submit"
+                    [disabled]="form.invalid || isSaving()"
+                    class="save-btn"
+                    [class.save-btn-ready]="form.valid && !isSaving()"
+                    [class.save-btn-disabled]="form.invalid || isSaving()">
+              @if (isSaving()) {
+                <span class="w-4 h-4 border-2 border-white/50 border-t-white
+                             rounded-full animate-spin"></span>
+                Saving…
+              } @else {
+                Save changes
+              }
+            </button>
+          </div>
+
+        </form>
+
+      </div>
+    </div>
+  }
+
+</div>

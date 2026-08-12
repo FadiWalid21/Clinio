@@ -1,0 +1,29 @@
+.field-error {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 4px;
+  min-height: 0; // ← collapses when empty
+  animation: fieldSlideIn 180ms ease-out;
+
+  &__icon {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    color: var(--c-error, #e05252);
+  }
+
+  &__text {
+    font-size: 0.72rem;
+    font-weight: 500;
+    color: var(--c-error, #e05252);
+    line-height: 1.4;
+    letter-spacing: 0.01em;
+  }
+}
+
+// ← must be outside .field-error, otherwise Chrome ignores it
+@keyframes fieldSlideIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}

@@ -1,0 +1,11 @@
+// Component-specific structural shifts if needed, otherwise clean imports from your shared auth styles
+.label-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-block-end: 0.5rem;
+
+  .form-label {
+    margin-block-end: 0;
+  }
+}

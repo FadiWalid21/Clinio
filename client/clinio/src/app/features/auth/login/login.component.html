@@ -1,0 +1,65 @@
+<div class="auth-card">
+  <div class="auth-header">
+    <h2 class="auth-title">Welcome back</h2>
+    <p class="auth-subtitle">Sign in to manage your wellness journey.</p>
+  </div>
+
+  <form [formGroup]="form" (ngSubmit)="submit()" class="auth-form">
+
+    <div class="form-group">
+      <label for="email" class="form-label">Email address</label>
+      <input
+        type="email"
+        id="email"
+        formControlName="email"
+        class="form-input"
+        [class.is-invalid]="validation.isInvalid(form, 'email')"
+        placeholder="name@example.com"
+      />
+      <app-field-error [form]="form" field="email" />
+    </div>
+
+    <div class="form-group">
+      <div class="label-wrapper">
+        <label for="password" class="form-label">Password</label>
+        <a routerLink="/auth/forgot-password" class="form-link">Forgot password?</a>
+      </div>
+      <input
+        type="password"
+        id="password"
+        formControlName="password"
+        class="form-input"
+        [class.is-invalid]="validation.isInvalid(form, 'password')"
+        placeholder="••••••••"
+      />
+      <app-field-error [form]="form" field="password" />
+    </div>
+
+    @if (serverError) {
+      <div class="server-error">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
+             fill="none" stroke="currentColor" stroke-width="2.5"
+             stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"/>
+          <line x1="12" y1="8" x2="12" y2="12"/>
+          <line x1="12" y1="16" x2="12.01" y2="16"/>
+        </svg>
+        {{ serverError }}
+      </div>
+    }
+
+    <button type="submit" class="btn btn-primary" [disabled]="isLoading">
+      @if (isLoading) {
+        <span class="spinner"></span>
+        Signing in...
+      } @else {
+        Sign in
+      }
+    </button>
+
+  </form>
+
+  <div class="auth-footer">
+    <p>Don't have an account? <a routerLink="/auth/register" class="form-link-action">Create an account</a></p>
+  </div>
+</div>

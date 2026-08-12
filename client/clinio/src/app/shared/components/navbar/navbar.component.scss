@@ -1,0 +1,518 @@
+// ── Outer wrapper: positions the floating pill ─────────────────────────────
+.nav-outer {
+  position: fixed;
+  top: 12px;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  padding: 0 16px;
+  pointer-events: none; // let clicks pass through the gap around the pill
+}
+
+// ── The pill itself ─────────────────────────────────────────────────────────
+// Grid instead of flex + absolute-centering: logo and actions each claim only
+// the width their content needs (auto columns), nav-links gets whatever's
+// left (1fr). Nothing can physically overlap its neighbor this way.
+.nav-pill {
+  pointer-events: all;
+  max-width: 860px;
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 12px;
+
+  height: 52px;
+  padding: 0 8px 0 12px;
+  border-radius: 26px;
+
+  background: color-mix(in srgb, var(--c-surface) 85%, transparent);
+  border: 0.5px solid var(--c-border);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.06),
+    0 4px 16px rgba(0, 0, 0, 0.06);
+}
+
+// ── Logo ────────────────────────────────────────────────────────────────────
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.logo-icon {
+  width: 30px;
+  height: 30px;
+  background: var(--c-mint);
+  border-radius: 9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 15px;
+}
+
+.logo-text {
+  font-size: 15.5px;
+  font-weight: 500;
+  color: var(--c-slate);
+  letter-spacing: -0.3px;
+}
+
+.logo-accent {
+  color: var(--c-mint);
+}
+
+// ── Center nav links ────────────────────────────────────────────────────────
+// Raised from 768px → 1024px: at 768px there isn't room for logo + 4 links +
+// language toggle + theme toggle + divider + Login + Get started inside an
+// 860px pill, so this only turns on once there's actually space for it.
+.nav-links {
+  display: none;
+  align-items: center;
+  justify-content: center; // centers within its own grid track, no absolute positioning needed
+  gap: 2px;
+
+  @media (min-width: 1024px) {
+    display: flex;
+  }
+}
+
+.nav-link {
+  font-size: 13px;
+  color: var(--c-muted);
+  text-decoration: none;
+  padding: 6px 12px;
+  border-radius: 20px;
+  transition: color 0.15s, background 0.15s;
+  white-space: nowrap;
+
+  &:hover {
+    color: var(--c-slate);
+    background: var(--c-surface-2);
+  }
+}
+
+.nav-link-active {
+  color: var(--c-slate) !important;
+  background: var(--c-surface-2) !important;
+  font-weight: 500;
+}
+
+// ── Right actions ───────────────────────────────────────────────────────────
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+  justify-content: flex-end;
+}
+
+.nav-icon-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 10px;
+  border: none;
+  background: transparent;
+  color: var(--c-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 15px;
+  transition: color 0.15s, background 0.15s;
+
+  &:hover {
+    color: var(--c-slate);
+    background: var(--c-surface-2);
+  }
+}
+
+.lang-label {
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.nav-divider {
+  width: 1px;
+  height: 18px;
+  background: var(--c-border-strong);
+  margin: 0 4px;
+
+  @media (max-width: 1023px) {
+    display: none;
+  }
+}
+
+// ── Buttons ─────────────────────────────────────────────────────────────────
+.btn-ghost {
+  display: none;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--c-slate);
+  text-decoration: none;
+  padding: 7px 14px;
+  border-radius: 20px;
+  border: 0.5px solid var(--c-border-strong);
+  transition: background 0.15s;
+  white-space: nowrap;
+
+  &:hover {
+    background: var(--c-surface-2);
+  }
+
+  @media (min-width: 1024px) {
+    display: flex;
+    align-items: center;
+  }
+}
+
+.btn-primary {
+  display: none;
+  font-size: 13px;
+  font-weight: 500;
+  color: white;
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 20px;
+  background: var(--c-mint);
+  transition: background 0.15s;
+  white-space: nowrap;
+
+  &:hover {
+    background: var(--c-mint-deep);
+  }
+
+  @media (min-width: 1024px) {
+    display: flex;
+    align-items: center;
+  }
+}
+
+// ── Profile button ──────────────────────────────────────────────────────────
+.profile-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px 4px 4px;
+  border-radius: 20px;
+  border: 0.5px solid var(--c-border);
+  background: transparent;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+
+  &:hover {
+    background: var(--c-surface-2);
+    border-color: var(--c-border-strong);
+  }
+}
+
+.profile-avatar {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--c-mint-soft);
+  color: var(--c-mint-text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile-chevron {
+  font-size: 13px;
+  color: var(--c-muted);
+  transition: transform 0.2s;
+
+  &.rotated {
+    transform: rotate(180deg);
+  }
+}
+
+// ── Profile dropdown ────────────────────────────────────────────────────────
+.profile-dropdown {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 8px);
+  width: 200px;
+  background: var(--c-surface);
+  border: 0.5px solid var(--c-border);
+  border-radius: 16px;
+  padding: 6px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1), 0 1px 4px rgba(0, 0, 0, 0.06);
+  animation: dropdown-in 0.12s ease;
+  z-index: 100;
+}
+
+@keyframes dropdown-in {
+  from { opacity: 0; transform: translateY(-4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 12px;
+  font-size: 13px;
+  color: var(--c-slate);
+  text-decoration: none;
+  border-radius: 10px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  width: 100%;
+  transition: background 0.12s;
+
+  i { font-size: 15px; color: var(--c-muted); }
+
+  &:hover {
+    background: var(--c-bg);
+    i { color: var(--c-mint); }
+  }
+}
+
+.dropdown-item-danger {
+  color: #e53e3e;
+  i { color: #e53e3e; }
+
+  &:hover {
+    background: #fff5f5;
+    i { color: #e53e3e; }
+  }
+}
+
+.dropdown-divider {
+  height: 1px;
+  background: var(--c-border);
+  margin: 4px 6px;
+}
+
+// ── Hamburger ───────────────────────────────────────────────────────────────
+.hamburger {
+  display: flex; // always flex for the spans layout
+  flex-direction: column;
+  gap: 5px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 8px;
+
+  span {
+    display: block;
+    width: 20px;
+    height: 2px;
+    background: var(--c-slate);
+    border-radius: 2px;
+    transition: transform 0.2s, opacity 0.2s;
+    transform-origin: center;
+  }
+
+  .open-top { transform: translateY(7px) rotate(45deg); }
+  .open-mid { opacity: 0; }
+  .open-bot { transform: translateY(-7px) rotate(-45deg); }
+
+  // hide once the full desktop nav takes over
+  @media (min-width: 1024px) {
+    display: none;
+  }
+}
+
+// ── Mobile menu ─────────────────────────────────────────────────────────────
+// Covers everything below 1024px now — phones and tablets both get the
+// compact pill + this dropdown, since that's the range where the full nav
+// doesn't have room to lay out without overlap.
+.mobile-menu {
+  position: fixed;
+  top: 76px; // below the pill (12px gap + 52px pill + 12px)
+  left: 16px;
+  right: 16px;
+  z-index: 49;
+  max-width: 860px;
+  margin: 8px auto 0;
+  background: color-mix(in srgb, var(--c-surface) 95%, transparent);
+  border: 0.5px solid var(--c-border);
+  border-radius: 20px;
+  backdrop-filter: blur(16px);
+  padding: 8px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+  animation: mobile-in 0.15s ease;
+
+  @media (min-width: 1024px) {
+    display: none;
+  }
+}
+
+@keyframes mobile-in {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.mobile-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 14px;
+  font-size: 14px;
+  color: var(--c-muted);
+  text-decoration: none;
+  border-radius: 12px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  width: 100%;
+  transition: color 0.12s, background 0.12s;
+
+  i { font-size: 16px; }
+
+  &:hover {
+    color: var(--c-slate);
+    background: var(--c-surface-2);
+  }
+}
+
+.mobile-link-danger {
+  color: #e53e3e;
+  &:hover { background: #fff5f5; color: #e53e3e; }
+}
+
+.mobile-divider {
+  height: 1px;
+  background: var(--c-border);
+  margin: 4px 6px;
+}
+
+.mobile-actions {
+  display: flex;
+  gap: 8px;
+  padding: 6px 6px 4px;
+
+  .mobile-btn {
+    flex: 1;
+    justify-content: center;
+    display: flex;
+  }
+
+  .btn-ghost, .btn-primary {
+    display: flex; // override the lg:hidden defaults for mobile
+  }
+}
+
+// ── Profile button with image + name ────────────────────────────────────────
+.profile-img {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  border: 1.5px solid var(--c-border);
+}
+
+.profile-initials {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--c-mint-text);
+}
+
+.profile-name {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--c-slate);
+  max-width: 80px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: none;
+
+  @media (min-width: 1024px) {
+    display: block;
+  }
+}
+
+// ── Dropdown header with avatar ─────────────────────────────────────────────
+.dropdown-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px 8px;
+}
+
+.dropdown-avatar-img {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1.5px solid var(--c-border);
+  flex-shrink: 0;
+}
+
+.dropdown-avatar-fallback {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--c-mint-soft);
+  color: var(--c-mint-text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.dropdown-name {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--c-slate);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.dropdown-role {
+  font-size: 11px;
+  color: var(--c-muted);
+  margin-top: 1px;
+}
+
+// ── Mobile profile header ───────────────────────────────────────────────────
+.mobile-profile-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 4px 8px 10px;
+}
+
+.mobile-avatar-img {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1.5px solid var(--c-border);
+  flex-shrink: 0;
+}
+
+.mobile-avatar-fallback {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--c-mint-soft);
+  color: var(--c-mint-text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.mobile-profile-name {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--c-slate);
+}

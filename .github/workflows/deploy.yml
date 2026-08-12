@@ -1,0 +1,125 @@
+name: Deploy Clinio API to MonsterASP
+
+on:
+  push:
+    branches: ["main"]
+
+jobs:
+  build-and-deploy:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "10.0.x"
+
+      - name: Restore Dependencies
+        run: dotnet restore
+
+      - name: Install EF Tool
+        run: dotnet tool install --global dotnet-ef
+
+      - name: Update Database
+        shell: pwsh
+        run: |
+          dotnet ef database update `
+            --project Clinio.Infrastructure/Clinio.Infrastructure.csproj `
+            --startup-project Clinio.Api/Clinio.Api.csproj `
+            --connection "${{ secrets.DB_CONNECTION }}"
+
+      - name: Publish API
+        run: |
+          dotnet publish Clinio.Api/Clinio.Api.csproj `
+            -c Release `
+            -o ./publish `
+            --no-restore
+
+      - name: Deploy to MonsterASP
+        shell: cmd
+        run: |
+          echo ==========================================
+          echo CLINIO DEPLOYMENT STARTING
+          echo ==========================================
+
+          echo Site Name: %MONSTER_SITE_NAME%
+          echo URL: %MONSTER_URL%
+          echo Username: %MONSTER_USERNAME%
+          echo Source: %GITHUB_WORKSPACE%\publish\
+
+          echo ==========================================
+
+          if "%MONSTER_SITE_NAME%"=="" (
+            echo ERROR: MONSTER_SITE_NAME is empty!
+            exit /b 1
+          )
+
+          if "%MONSTER_URL%"=="" (
+            echo ERROR: MONSTER_URL is empty!
+            exit /b 1
+          )
+
+          if "%MONSTER_USERNAME%"=="" (
+            echo ERROR: MONSTER_USERNAME is empty!
+            exit /b 1
+          )
+
+          if "%MONSTER_PASSWORD%"=="" (
+            echo ERROR: MONSTER_PASSWORD is empty!
+            exit /b 1
+          )
+
+          REM Find MSDeploy
+          set "msdeploy=C:\Program Files\IIS\Microsoft Web Deploy V3\msdeploy.exe"
+
+          if not exist "%msdeploy%" (
+            set "msdeploy=C:\Program Files (x86)\IIS\Microsoft Web Deploy V3\msdeploy.exe"
+          )
+
+          if not exist "%msdeploy%" (
+            echo ERROR: msdeploy.exe not found!
+            exit /b 1
+          )
+
+          echo Using msdeploy:
+          echo %msdeploy%
+
+          echo.
+          echo Executing deployment...
+          echo.
+
+          "%msdeploy%" ^
+            -verb:sync ^
+            -source:contentPath="%GITHUB_WORKSPACE%\publish\" ^
+            -dest:contentPath="%MONSTER_SITE_NAME%",computerName="https://%MONSTER_URL%:8172/msdeploy.axd?site=%MONSTER_SITE_NAME%",userName="%MONSTER_USERNAME%",password="%MONSTER_PASSWORD%",AuthType="Basic" ^
+            -enableRule:AppOffline ^
+            -allowUntrusted ^
+            -verbose
+
+          set DEPLOY_EXIT=%ERRORLEVEL%
+
+          if %DEPLOY_EXIT% NEQ 0 (
+            echo.
+            echo ==========================================
+            echo DEPLOYMENT FAILED!
+            echo Exit Code: %DEPLOY_EXIT%
+            echo ==========================================
+            exit /b %DEPLOY_EXIT%
+          )
+
+          echo.
+          echo ==========================================
+          echo DEPLOYMENT SUCCESSFUL!
+          echo ==========================================
+          echo API should be available at:
+          echo http://%MONSTER_URL%/
+          echo ==========================================
+
+    env:
+      MONSTER_SITE_NAME: ${{ secrets.MONSTER_SITE_NAME }}
+      MONSTER_URL: ${{ secrets.MONSTER_URL }}
+      MONSTER_USERNAME: ${{ secrets.MONSTER_USERNAME }}
+      MONSTER_PASSWORD: ${{ secrets.MONSTER_PASSWORD }}

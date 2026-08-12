@@ -1,0 +1,60 @@
+<div class="auth-card">
+  <div class="auth-header">
+    <h2 class="auth-title">Create your account</h2>
+    <p class="auth-subtitle">Join Clinio to start tailoring your clinical care.</p>
+  </div>
+
+  <form (ngSubmit)="onSubmit()" class="auth-form">
+    <div class="form-group">
+      <label for="fullName" class="form-label">Full name</label>
+      <input 
+        type="text" 
+        id="fullName" 
+        name="fullName" 
+        [(ngModel)]="user.fullName" 
+        class="form-input" 
+        placeholder="Alex Morgan" 
+        required>
+    </div>
+
+    <div class="form-group">
+      <label for="email" class="form-label">Email address</label>
+      <input 
+        type="email" 
+        id="email" 
+        name="email" 
+        [(ngModel)]="user.email" 
+        class="form-input" 
+        placeholder="name@example.com" 
+        required>
+    </div>
+
+    <div class="form-group">
+      <label for="password" class="form-label">Password</label>
+      <input 
+        type="password" 
+        id="password" 
+        name="password" 
+        [(ngModel)]="user.password" 
+        class="form-input" 
+        placeholder="At least 8 characters" 
+        required>
+    </div>
+
+    <div class="form-group-checkbox">
+      <input 
+        type="checkbox" 
+        id="terms" 
+        name="terms" 
+        [(ngModel)]="user.terms" 
+        required>
+      <label for="terms" class="checkbox-label">I agree to the privacy policy and terms of service.</label>
+    </div>
+
+    <button type="submit" class="btn btn-primary" [disabled]="!user.terms">Create account</button>
+  </form>
+
+  <div class="auth-footer">
+    <p>Already have an account? <a routerLink="/auth/login" class="form-link-action">Sign in</a></p>
+  </div>
+</div>

@@ -1,0 +1,62 @@
+:root {
+    --navbar-height: 76px;
+
+    --c-bg:            #F7F8FA;
+    --c-surface:       #FFFFFF;
+    --c-surface-2:     #F0F4F8;
+    --c-mint:          #2BAE85;
+    --c-mint-deep:     #1D8A68;
+    --c-mint-soft:     #EAF7F2;
+    --c-mint-text:     #0F5E45;
+    --c-slate:         #1C2B3A;
+    --c-muted:         #64748B;
+    --c-muted-light:   #94A3B8;
+    --c-border:        #E8ECF0;
+    --c-border-strong: #CBD5E1;
+    --c-amber:         #F59E0B;
+
+    /* RGB channel equivalents so Tailwind opacity modifiers (bg-c-mint/10, shadow-c-mint/10, etc.) work */
+    --c-bg-rgb:            247 248 250;
+    --c-surface-rgb:       255 255 255;
+    --c-surface-2-rgb:     240 244 248;
+    --c-mint-rgb:          43 174 133;
+    --c-mint-deep-rgb:     29 138 104;
+    --c-mint-soft-rgb:     234 247 242;
+    --c-mint-text-rgb:     15 94 69;
+    --c-slate-rgb:         28 43 58;
+    --c-muted-rgb:         100 116 139;
+    --c-muted-light-rgb:   148 163 184;
+    --c-border-rgb:        232 236 240;
+    --c-border-strong-rgb: 203 213 225;
+    --c-amber-rgb:         245 158 11;
+}
+
+.dark {
+    --c-bg:            #0F1720;
+    --c-surface:       #1A2535;
+    --c-surface-2:     #243040;
+    --c-mint:          #2BAE85;
+    --c-mint-deep:     #34C99A;
+    --c-mint-soft:     #0D2B22;
+    --c-mint-text:     #5DCAA5;
+    --c-slate:         #E8F0F7;
+    --c-muted:         #8FA3B8;
+    --c-muted-light:   #5A7089;
+    --c-border:        #263447;
+    --c-border-strong: #344D66;
+    --c-amber:         #FBBF24;
+
+    --c-bg-rgb:            15 23 32;
+    --c-surface-rgb:       26 37 53;
+    --c-surface-2-rgb:     36 48 64;
+    --c-mint-rgb:          43 174 133;
+    --c-mint-deep-rgb:     52 201 154;
+    --c-mint-soft-rgb:     13 43 34;
+    --c-mint-text-rgb:     93 202 165;
+    --c-slate-rgb:         232 240 247;
+    --c-muted-rgb:         143 163 184;
+    --c-muted-light-rgb:  90 112 137;
+    --c-border-rgb:        38 52 71;
+    --c-border-strong-rgb: 52 77 102;
+    --c-amber-rgb:         251 191 36;
+}

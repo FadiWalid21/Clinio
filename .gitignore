@@ -1,0 +1,22 @@
+# .NET
+**/bin/
+**/obj/
+**/packages/
+
+# JetBrains Rider / IntelliJ
+.idea/
+*.iml
+*.user
+*.suo
+*.DotSettings.user
+_ReSharper.Caches/
+
+# Visual Studio
+.vs/
+
+# macOS
+.DS_Store
+
+# Local configuration / secrets
+appsettings.Development.json
+appsettings.Local.json

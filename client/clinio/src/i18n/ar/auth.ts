@@ -1,0 +1,32 @@
+export const auth = {
+  login: {
+    title: 'أهلاً بعودتك',
+    subtitle: 'سجّل الدخول لإدارة مواعيدك.',
+    email: 'البريد الإلكتروني',
+    password: 'كلمة المرور',
+    submit: 'تسجيل الدخول',
+    noAccount: 'ليس لديك حساب؟',
+    registerLink: 'أنشئ حساباً',
+  },
+  register: {
+    title: 'إنشاء حساب جديد',
+    subtitle: 'احجز مواعيد مع أطباء معتمدين في جميع أنحاء مصر.',
+    firstName: 'الاسم الأول',
+    lastName: 'اسم العائلة',
+    email: 'البريد الإلكتروني',
+    password: 'كلمة المرور',
+    confirmPassword: 'تأكيد كلمة المرور',
+    dateOfBirth: 'تاريخ الميلاد',
+    gender: 'النوع',
+    genderMale: 'ذكر',
+    genderFemale: 'أنثى',
+    terms: 'أوافق على سياسة الخصوصية وشروط الخدمة.',
+    submit: 'إنشاء الحساب',
+    hasAccount: 'لديك حساب بالفعل؟',
+    loginLink: 'تسجيل الدخول',
+  },
+  errors: {
+    genericServerError: 'حدث خطأ ما. حاول مرة أخرى.',
+    passwordMismatch: 'كلمتا المرور غير متطابقتين.',
+  },
+};

@@ -1,0 +1,32 @@
+export const auth = {
+  login: {
+    title: 'Welcome back',
+    subtitle: 'Log in to manage your appointments.',
+    email: 'Email',
+    password: 'Password',
+    submit: 'Log in',
+    noAccount: "Don't have an account?",
+    registerLink: 'Create one',
+  },
+  register: {
+    title: 'Create your account',
+    subtitle: 'Book appointments with verified doctors across Egypt.',
+    firstName: 'First name',
+    lastName: 'Last name',
+    email: 'Email',
+    password: 'Password',
+    confirmPassword: 'Confirm password',
+    dateOfBirth: 'Date of birth',
+    gender: 'Gender',
+    genderMale: 'Male',
+    genderFemale: 'Female',
+    terms: 'I agree to the privacy policy and terms of service.',
+    submit: 'Create account',
+    hasAccount: 'Already have an account?',
+    loginLink: 'Log in',
+  },
+  errors: {
+    genericServerError: 'Something went wrong. Please try again.',
+    passwordMismatch: 'Passwords do not match.',
+  },
+};

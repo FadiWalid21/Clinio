@@ -1,0 +1,248 @@
+<!-- about-us.component.html -->
+
+<!-- ========== HERO ========== -->
+<section class="bg-c-surface border-b border-c-border px-6 md:px-10 py-16 md:py-24 text-center">
+
+  <!-- Badge -->
+  <div class="inline-flex items-center gap-2 bg-c-mint-soft text-c-mint-text
+              text-xs font-medium px-4 py-[5px] rounded-full mb-7
+              border border-c-mint-soft">
+    <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" viewBox="0 0 24 24"
+         fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2z"/>
+    </svg>
+    {{ ls.t().about.hero.badge }}
+  </div>
+
+  <h1 class="text-[32px] md:text-[42px] font-medium text-c-slate
+             leading-[1.18] tracking-[-0.8px]
+             max-w-[640px] mx-auto mb-4">
+    {{ ls.t().about.hero.heading }}
+    <span class="text-c-mint">{{ ls.t().about.hero.headingAccent }}</span>
+  </h1>
+
+  <p class="text-[15px] text-c-muted leading-[1.65]
+            max-w-[480px] mx-auto">
+    {{ ls.t().about.hero.subtitle }}
+  </p>
+
+</section>
+
+<!-- ========== MISSION & VISION ========== -->
+<section class="bg-c-bg border-b border-c-border px-6 md:px-10 py-16 md:py-24">
+  <div class="max-w-[960px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
+
+    <!-- Mission Card -->
+    <div class="bg-c-surface rounded-2xl border border-c-border p-8
+                hover:border-c-mint-soft hover:shadow-[0_4px_24px_rgba(43,174,133,0.08)]
+                transition-all duration-300 group">
+      <div class="w-12 h-12 rounded-xl bg-c-mint-soft flex items-center justify-center mb-5
+                  group-hover:bg-c-mint group-hover:scale-105 transition-all duration-300">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-c-mint group-hover:text-white transition-colors"
+             fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+          <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+        </svg>
+      </div>
+      <h3 class="text-[18px] font-medium text-c-slate mb-3 tracking-[-0.2px]">
+        {{ ls.t().about.mission.title }}
+      </h3>
+      <p class="text-[14px] text-c-muted leading-[1.7]">
+        {{ ls.t().about.mission.description }}
+      </p>
+    </div>
+
+    <!-- Vision Card -->
+    <div class="bg-c-surface rounded-2xl border border-c-border p-8
+                hover:border-c-mint-soft hover:shadow-[0_4px_24px_rgba(43,174,133,0.08)]
+                transition-all duration-300 group">
+      <div class="w-12 h-12 rounded-xl bg-c-mint-soft flex items-center justify-center mb-5
+                  group-hover:bg-c-mint group-hover:scale-105 transition-all duration-300">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-c-mint group-hover:text-white transition-colors"
+             fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+          <path d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z"/>
+          <path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+        </svg>
+      </div>
+      <h3 class="text-[18px] font-medium text-c-slate mb-3 tracking-[-0.2px]">
+        {{ ls.t().about.vision.title }}
+      </h3>
+      <p class="text-[14px] text-c-muted leading-[1.7]">
+        {{ ls.t().about.vision.description }}
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ========== CORE VALUES ========== -->
+<section class="bg-c-surface border-b border-c-border px-6 md:px-10 py-16 md:py-24">
+  <div class="max-w-[1040px] mx-auto">
+
+    <!-- Section header -->
+    <div class="text-center max-w-[480px] mx-auto mb-14">
+      <div class="inline-flex items-center gap-2 bg-c-mint-soft text-c-mint-text
+                  text-xs font-medium px-4 py-[5px] rounded-full mb-6
+                  border border-c-mint-soft">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none"
+             viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+        </svg>
+        {{ ls.t().about.values.badge }}
+      </div>
+      <h2 class="text-[28px] md:text-[36px] font-medium text-c-slate
+                 leading-[1.2] tracking-[-0.6px] mb-4">
+        {{ ls.t().about.values.heading }}
+        <span class="text-c-mint">{{ ls.t().about.values.headingAccent }}</span>
+      </h2>
+      <p class="text-[15px] text-c-muted leading-[1.65]">
+        {{ ls.t().about.values.subtitle }}
+      </p>
+    </div>
+
+    <!-- Values grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      @for (value of values; track value.key) {
+        <div class="bg-c-bg border border-c-border rounded-2xl p-6
+                    hover:border-c-mint-soft hover:shadow-[0_4px_24px_rgba(43,174,133,0.08)]
+                    transition-all duration-300 group text-center">
+          <div class="w-12 h-12 rounded-xl bg-c-mint-soft flex items-center justify-center mx-auto mb-4
+                      group-hover:bg-c-mint group-hover:scale-105 transition-all duration-300">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-c-mint group-hover:text-white transition-colors"
+                 fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+              <path [attr.d]="value.iconPath"/>
+            </svg>
+          </div>
+          <h3 class="text-[15px] font-medium text-c-slate mb-2">{{ value.title }}</h3>
+          <p class="text-[13px] text-c-muted leading-[1.6]">{{ value.description }}</p>
+        </div>
+      }
+    </div>
+
+  </div>
+</section>
+
+<!-- ========== TEAM ========== -->
+<section class="bg-c-bg border-b border-c-border px-6 md:px-10 py-16 md:py-24">
+  <div class="max-w-[1040px] mx-auto">
+
+    <!-- Section header -->
+    <div class="text-center max-w-[480px] mx-auto mb-14">
+      <div class="inline-flex items-center gap-2 bg-c-mint-soft text-c-mint-text
+                  text-xs font-medium px-4 py-[5px] rounded-full mb-6
+                  border border-c-mint-soft">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none"
+             viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4-4v2"/>
+          <circle cx="9" cy="7" r="4"/>
+          <path d="M23 21v-2a4 4 0 00-3-3.87"/>
+          <path d="M16 3.13a4 4 0 010 7.75"/>
+        </svg>
+        {{ ls.t().about.team.badge }}
+      </div>
+      <h2 class="text-[28px] md:text-[36px] font-medium text-c-slate
+                 leading-[1.2] tracking-[-0.6px] mb-4">
+        {{ ls.t().about.team.heading }}
+        <span class="text-c-mint">{{ ls.t().about.team.headingAccent }}</span>
+      </h2>
+      <p class="text-[15px] text-c-muted leading-[1.65]">
+        {{ ls.t().about.team.subtitle }}
+      </p>
+    </div>
+
+    <!-- Team grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+      @for (member of teamMembers; track member.id) {
+        <div class="bg-c-surface border border-c-border rounded-2xl p-5 text-center
+                    hover:border-c-mint-soft hover:shadow-[0_4px_24px_rgba(43,174,133,0.08)]
+                    transition-all duration-300 group">
+          @if (member.profileImageUrl) {
+            <img [src]="member.profileImageUrl" [alt]="member.name"
+                 class="w-20 h-20 rounded-full object-cover mx-auto mb-4 border-2 border-c-border group-hover:border-c-mint-soft transition-colors" />
+          } @else {
+            <div class="w-20 h-20 rounded-full bg-c-mint-soft flex items-center justify-center mx-auto mb-4
+                        text-c-mint-text text-xl font-medium border-2 border-c-border
+                        group-hover:border-c-mint-soft transition-colors">
+              {{ member.name[0] }}
+            </div>
+          }
+          <h3 class="text-[15px] font-medium text-c-slate mb-1">{{ member.name }}</h3>
+          <p class="text-[13px] text-c-muted mb-3">{{ member.role }}</p>
+          <!-- Social links optional -->
+          <div class="flex justify-center gap-3 text-c-muted-light">
+            @if (member.linkedin) {
+              <a [href]="member.linkedin" class="hover:text-c-mint transition-colors" target="_blank">
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2zM4 6a2 2 0 110-4 2 2 0 010 4z"/></svg>
+              </a>
+            }
+            @if (member.twitter) {
+              <a [href]="member.twitter" class="hover:text-c-mint transition-colors" target="_blank">
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/></svg>
+              </a>
+            }
+          </div>
+        </div>
+      }
+    </div>
+
+  </div>
+</section>
+
+<!-- ========== STATS & CTA ========== -->
+<section class="bg-c-surface border-b border-c-border px-6 md:px-10 py-16 md:py-24">
+  <div class="max-w-[1040px] mx-auto">
+
+    <!-- Stats grid (same style as testimonials stats) -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-px bg-c-border
+                rounded-2xl overflow-hidden border border-c-border mb-16">
+
+      <div class="stat-cell bg-c-bg px-8 py-8 text-center">
+        <div class="text-[32px] md:text-[38px] font-medium text-c-slate
+                    tracking-[-1px] leading-none mb-1">{{ ls.t().about.stats.team.value }}</div>
+        <div class="text-[13px] text-c-muted mt-2">{{ ls.t().about.stats.team.label }}</div>
+      </div>
+
+      <div class="stat-cell bg-c-bg px-8 py-8 text-center">
+        <div class="text-[32px] md:text-[38px] font-medium text-c-slate
+                    tracking-[-1px] leading-none mb-1">{{ ls.t().about.stats.experience.value }}</div>
+        <div class="text-[13px] text-c-muted mt-2">{{ ls.t().about.stats.experience.label }}</div>
+      </div>
+
+      <div class="stat-cell bg-c-bg px-8 py-8 text-center">
+        <div class="text-[32px] md:text-[38px] font-medium text-c-slate
+                    tracking-[-1px] leading-none mb-1">{{ ls.t().about.stats.patients.value }}</div>
+        <div class="text-[13px] text-c-muted mt-2">{{ ls.t().about.stats.patients.label }}</div>
+      </div>
+
+      <div class="stat-cell bg-c-bg px-8 py-8 text-center">
+        <div class="flex items-baseline justify-center gap-1">
+          <span class="text-[32px] md:text-[38px] font-medium text-c-slate
+                       tracking-[-1px] leading-none">{{ ls.t().about.stats.rating.value }}</span>
+          <span class="text-[20px] text-amber-400 leading-none mb-0.5">★</span>
+        </div>
+        <div class="text-[13px] text-c-muted mt-2">{{ ls.t().about.stats.rating.label }}</div>
+      </div>
+
+    </div>
+
+    <!-- Call to Action -->
+    <div class="text-center">
+      <h3 class="text-[24px] md:text-[28px] font-medium text-c-slate mb-3">
+        {{ ls.t().about.cta.heading }}
+      </h3>
+      <p class="text-[15px] text-c-muted leading-[1.65] max-w-[420px] mx-auto mb-8">
+        {{ ls.t().about.cta.subtitle }}
+      </p>
+      <a routerLink="/doctors"
+         class="inline-flex items-center gap-2 bg-c-mint text-white
+                text-[14px] font-medium px-6 py-3 rounded-[14px]
+                hover:bg-c-mint-deep transition-colors duration-200">
+        {{ ls.t().about.cta.button }}
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 rtl:-scale-x-100" fill="none"
+             viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path d="M9 5l7 7-7 7"/>
+        </svg>
+      </a>
+    </div>
+
+  </div>
+</section>
