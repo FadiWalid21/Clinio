@@ -22,8 +22,8 @@ export class DoctorsService {
     if (filters.searchTerm) params['searchTerm'] = filters.searchTerm;
     if (filters.specialty)  params['specialty']  = filters.specialty;
     if (filters.clinicId)   params['clinicId']   = filters.clinicId;
-    if (filters.page)       params['page']        = filters.page;
-    if (filters.pageSize)   params['pageSize']    = filters.pageSize;
+    // if (filters.page)       params['page']        = filters.page;
+    // if (filters.pageSize)   params['pageSize']    = filters.pageSize;
 
     return this.api.get<Doctor[]>('doctors', params).pipe(
       tap(doctors => this._doctors.set(doctors))
