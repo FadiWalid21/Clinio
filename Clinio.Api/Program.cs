@@ -21,7 +21,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowClientApp", policy =>
     {
         policy.WithOrigins(
-                "https://clinio-fv1.vercel.app", 
+                "https://clinio-green.vercel.app", 
                 "http://localhost:4300",
                 "http://localhost:4200"
             )
