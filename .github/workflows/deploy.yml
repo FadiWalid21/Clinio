@@ -122,4 +122,4 @@ jobs:
       MONSTER_SITE_NAME: ${{ secrets.MONSTER_SITE_NAME }}
       MONSTER_URL: ${{ secrets.MONSTER_URL }}
       MONSTER_USERNAME: ${{ secrets.MONSTER_USERNAME }}
-      MONSTER_PASSWORD: ${{ secrets.MONSTER_PASSWORD }}
+      MONSTER_PASSWORD: ${{ secrets.MONSTERASP_PASSWORD }}
