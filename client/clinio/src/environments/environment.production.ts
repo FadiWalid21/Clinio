@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://clinio.runasp.net'
+  apiUrl: 'https://clinio.runasp.net/api'
 };
