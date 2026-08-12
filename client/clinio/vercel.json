@@ -1,4 +1,6 @@
 {
+  "framework": "angular",
+  "outputDirectory": "dist/clinio/browser",
   "rewrites": [
     { "source": "/(.*)", "destination": "/index.html" }
   ]
