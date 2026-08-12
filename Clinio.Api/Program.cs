@@ -53,7 +53,7 @@ if (app.Environment.IsDevelopment())
         await next();
     });
 }
-
+app.UseDeveloperExceptionPage();
 // app.UseCors("DevPolicy");
 app.UseExceptionHandler();
 app.UseHttpsRedirection();
